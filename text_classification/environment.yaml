@@ -1,0 +1,12 @@
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.7
+  - pip
+  - pytorch
+  - cudatoolkit=10.2
+  - pip:
+    - scikit-learn>=0.23.2
+    - requests>=2.25.0
+    - transformers==3.5.1
