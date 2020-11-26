@@ -8,8 +8,11 @@ source /etc/profile
 module add anaconda3/wmlce
 
 # Activate conda package from where it was saved.
-conda activate $global_scratch/PACKAGE_NAME
+source activate $global_scratch/PACKAGE_NAME
 
+# THIS NEEDS SETTINGS TO WHERE EVER YOU STORE THE TRANSFORMER MODELS
+TRANSFORMERS_CACHE=TRANSFORMERS_CACHE
+export TRANSFORMERS_CACHE
 # Downlaods the bert-base-uncased transformer model to $global_scratch/transformer_models
 bash ./transformer_model_download.sh  $global_scratch/transformer_models bert-base-uncased
 

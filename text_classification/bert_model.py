@@ -164,6 +164,7 @@ if __name__ == '__main__':
     parser.add_argument('dev_fp', help='File path to development dataset', type=resolved_path)
     parser.add_argument('test_fp', help='File path to test dataset', type=resolved_path)
     parser.add_argument('label_fp', help='File path to the labels file', type=resolved_path)
+    parser.add_argument('save_fp', help='File path to save the trained model too', type=resolved_path)
     parser.add_argument('--cuda', help='Whether or not to use CUDA GPU device', 
                         action='store_true')
     parser.add_argument('--learning-rate', help='Learning rate', 
@@ -203,4 +204,11 @@ if __name__ == '__main__':
     import time
     t = time.time()
     train(transformer_model, train_dataloader, optimizer, device)
-    print(time.time() - t)
+    print(f'Time to train the model for one epoch: {time.time() - t}')
+
+    save_fp: Path = args.save_fp
+    if not save_fp.parent.exists():
+        save_fp.parent.mkdir(parents=True)
+    t = time.time()
+    torch.save(transformer_model, args.save_fp)
+    print(f'Time to save model: {time.time() - t}')

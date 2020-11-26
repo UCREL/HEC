@@ -81,7 +81,7 @@ To ensure that the transformer model is saved to a directory of choice we have w
 
 To train the model for one epoch:
 ``` bash
-python bert_model.py ./data/train.tsv ./data/dev.tsv ./data/test.tsv ./data/emotions.txt --cuda --batch-size 16
+python ./bert_model.py ./data/train.tsv ./data/dev.tsv ./data/test.tsv ./data/emotions.txt ./model/saved_model.pt --cuda --batch-size 16
 ```
 
 All this does is train a BERT model on the multi label training dataset for one epoch. It actually does nothing with the development and test files at the moment. At the end of the script it prints out the time it takes to train the model for one epoch. On my home machine with a 6GB nvidia 1060 it takes around 20 minutes and I have to use a batch size of 4. This also prints the loss every 100 batches and the average loss across the whole epoch it was trained on.
