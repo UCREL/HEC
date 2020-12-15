@@ -5,6 +5,9 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
 ## Table of contents
 
 1. [Brief overview of the HEC resources](#brief-overview-of-the-hec-resources)
+    1. [Computational resources](#computational-resources)
+    2. [File storage](#file-storage)
+        1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
 2. [Presentations about the HEC](#presentations-about-the-hec)
 
 ## Brief overview of the HEC resources
@@ -44,4 +47,4 @@ That would change the last modified date and time for all files in `./presentati
 
 ## Presentations about the HEC
 
-1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP\ Group\ 26_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP\ Group\ 26_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
+1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
