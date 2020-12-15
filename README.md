@@ -8,8 +8,10 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
     1. [Computational resources](#computational-resources)
     2. [File storage](#file-storage)
         1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
-        2. [Luna](#luna)
-2. [Presentations about the HEC](#presentations-about-the-hec)
+        2. [Transferring files](#transferring-files)
+        3. [Luna](#luna)
+2. [Software installation](#software-installation)
+3. [Presentations about the HEC](#presentations-about-the-hec)
 
 ## Brief overview of the HEC resources
 
@@ -46,6 +48,17 @@ bash update_dir.sh ./presentations
 
 That would change the last modified date and time for all files in `./presentations` to `now`. **This should be fine to run on the login node.**
 
+#### Transferring files
+
+For Linux users this can be done through [`scp`](https://linux.die.net/man/1/scp) e.g.:
+
+```
+scp -r /PATH/TO/DIRECTORY/TO/TRANSFER username@wayland.hec.lancaster.ac.uk:/DIRECTORY/TO/TRANSFER/TO
+```
+
+For Windows users see the Lancaster [help page.](https://answers.lancaster.ac.uk/display/ISS/Transferring+files+to+the+HEC+from+a+Windows+PC)
+
+
 #### Luna
 
 (None of this sub-section has been tested yet)
@@ -68,6 +81,14 @@ smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE //luna/fst
 ```
 smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
 ```
+
+## Software installation
+
+The HEC has a lot of pre-installed software packages, however as software packages can conflict with each other these software packages are contained into different environment modules. Each environment module contains a different set of software e.g. some contain Python while others do not. For a detailed guide on how to use these environment modules please read the detailed [help page.](https://answers.lancaster.ac.uk/display/ISS/Using+environment+modules+on+the+HEC) From now on we assume that you know about the `module` command and what it does from the information within the help page link just given.
+
+### Custom software installation
+
+Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./custom_install](./custom_install).
 
 ## Presentations about the HEC
 
