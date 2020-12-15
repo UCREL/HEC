@@ -8,6 +8,7 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
     1. [Computational resources](#computational-resources)
     2. [File storage](#file-storage)
         1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
+        2. [Luna](#luna)
 2. [Presentations about the HEC](#presentations-about-the-hec)
 
 ## Brief overview of the HEC resources
@@ -44,6 +45,29 @@ bash update_dir.sh ./presentations
 ```
 
 That would change the last modified date and time for all files in `./presentations` to `now`. **This should be fine to run on the login node.**
+
+#### Luna
+
+(None of this sub-section has been tested yet)
+
+A detailed guide on how to transfer files between Luna and the HEC can be found in this [help page.](https://answers.lancaster.ac.uk/display/ISS/Transferring+files+to+the+HEC+from+luna+or+other+smb-compliant+services) A bit of an extension to that help guide is provided here. As it uses the `smbclient` command of which this would likely require a password it maybe of use to create an authentication file in the following format:
+
+```
+username = <value>
+password = <value>
+```
+
+This file can then be used like so:
+
+```
+smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE //luna/fst
+```
+
+**By default the `smbclient` only encrypts the login credentials, to encrypt the entire payload add the `-e` flag like so:**
+
+```
+smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
+```
 
 ## Presentations about the HEC
 
