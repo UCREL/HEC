@@ -43,7 +43,7 @@ This ensures that any files in the Python environment folder that has been creat
 In this example we show how to create a custom Python environment whereby it will have the following:
 
 1. Python version 3.8
-2. [PyTorch](https://pytorch.org/) version 1.6 for GPU running CUDA tool kit version 10.2
+2. [PyTorch](https://pytorch.org/) latest version for GPU running CUDA tool kit version 10.2
 3. [Joey NMT](https://github.com/joeynmt/joeynmt) version 1.0
 
 The YAML environment file ([./example/environment.yaml](./example/environment.yaml)) can seen below:
