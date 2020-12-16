@@ -88,7 +88,7 @@ The HEC has a lot of pre-installed software packages, however as software packag
 
 ### Custom software installation
 
-Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./custom_install](./custom_install).
+Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./install_packages](./install_packages).
 
 ## Presentations about the HEC
 

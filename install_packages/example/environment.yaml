@@ -1,0 +1,10 @@
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - pytorch
+  - cudatoolkit=10.2
+  - pip:
+    - joeynmt==1.0.0
