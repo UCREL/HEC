@@ -10,8 +10,10 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
         1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
         2. [Transferring files](#transferring-files)
         3. [Luna](#luna)
-2. [Software installation](#software-installation)
-3. [Presentations about the HEC](#presentations-about-the-hec)
+2. [Job submission/monitoring](#job-submission/monitoring)
+3. [Software installation](#software-installation)
+4. [Presentations about the HEC](#presentations-about-the-hec)
+5. [HEC cheat sheet](#hec-cheat-sheet)
 
 ## Brief overview of the HEC resources
 
@@ -82,6 +84,10 @@ smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE //luna/fst
 smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
 ```
 
+## Job submission/monitoring
+
+The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/ISS/Submitting+jobs+on+the+HEC) and [monitoring jobs](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) is very good and very detailed, thus please read these before reading the next sections. The only addon to HEC help guide that is provided in the README is the cheat sheet of HEC commands which can be found in the [HEC cheat sheet section](#hec-cheat-sheet).
+
 ## Software installation
 
 The HEC has a lot of pre-installed software packages, however as software packages can conflict with each other these software packages are contained into different environment modules. Each environment module contains a different set of software e.g. some contain Python while others do not. For a detailed guide on how to use these environment modules please read the detailed [help page.](https://answers.lancaster.ac.uk/display/ISS/Using+environment+modules+on+the+HEC) From now on we assume that you know about the `module` command and what it does from the information within the help page link just given.
@@ -93,3 +99,5 @@ Even though the HEC provides a lot of different environment setups as shown from
 ## Presentations about the HEC
 
 1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
+
+## HEC cheat sheet

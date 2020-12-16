@@ -1,6 +1,6 @@
 # Custom software installation
 
-Here we assume that you have read the [file storage introduction](../README.md#file-storage) and [scratch storage how to make the most of it sub-section](../README.md#scratch-storage-how-to-make-the-most-of-it) from the main [README](../README.md).
+Here we assume that you have read the [file storage introduction](../README.md#file-storage) and [scratch storage how to make the most of it sub-section](../README.md#scratch-storage-how-to-make-the-most-of-it) from the main [README](../README.md). Also that you have read the [Job submission/monitoring](../README.md#job-submission/monitoring) section from the main README.
 
 In this tutorial we show how you can install your own Python environment given the `anaconda3/wmlce` module available within the module list on the HEC. The `anaconda3/wmlce` module is chosen here as the base module as it:
 
