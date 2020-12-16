@@ -10,7 +10,7 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
         1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
         2. [Transferring files](#transferring-files)
         3. [Luna](#luna)
-2. [Job submission/monitoring](#job-submission/monitoring)
+2. [Job submission/monitoring](#job-submissionmonitoring)
 3. [Software installation](#software-installation)
 4. [Presentations about the HEC](#presentations-about-the-hec)
 5. [HEC cheat sheet](#hec-cheat-sheet)
