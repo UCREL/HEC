@@ -24,7 +24,21 @@ The profiler does not require any extra code to be added to your scripts, rather
 2. Create the conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the conda environment at `$global_scratch/py3.8-scalene`
 3. We can now run the [./scalene.sh](./scalene.sh) by submitting the following job `qsub scalene.com`
 4. You should be able to view the outputs from `scalene` in the `scalene_output` directory e.g. to see the output from batch size 50 without the `reduced-profile`: `cat ./scalene_output/scalene_50.txt`
-4. To get the scalene profile outputs into the current directory from the HEC: `scp -r username@wayland.hec.lancaster.ac.uk:./scalene_example/scalene_output .`
+5. To get the scalene profile outputs into the current directory from the HEC, assuming you are in this directory on your own computer: `scp -r username@wayland.hec.lancaster.ac.uk:./scalene_example/scalene_output .`
+
+## To run on your own computer
+
+We assume that you have Python >= 3.6.1 and are running either Linux, Mac, or another Linux based system. 
+
+Using Pip:
+
+1. Install the required pips: `pip install -r requirements.txt`
+2. run `./scalene.sh` 
+
+Using conda:
+
+1. Install the required pips: `conda create -n scalene-example --file ./environment.yaml`
+2. run `./scalene.sh`
 
 ## Scalene output
 
