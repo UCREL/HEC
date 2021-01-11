@@ -1,5 +1,7 @@
 # Scalene example
 
+**Note** only use a profiler like Scalene when debugging/testing your code and not when you want to run your code on the full task as the profiler will slow your code down and also should not be needed.
+
 This example shows how to use the [Scalene profiler](https://github.com/emeryberger/scalene). This example will run the profiler over the [./tagging.py](./tagging.py) with a batch size of 50 and 300 whereby the profiler output is saved to [./scalene_output/scalene_50.txt](./scalene_output/scalene_50.txt) and [./scalene_output/scalene_300.txt](./scalene_output/scalene_300.txt) respectively. The [./tagging.py](./tagging.py) script runs the SpaCy English small Named Entity Recognition (NER) model over the Alice in Wonderland text, which can be found at [./alice-in-wonderland.txt](./alice-in-wonderland.txt), and outputs the found entities to the [./output.tsv](./output.tsv) file.
 
 
@@ -106,7 +108,7 @@ And when using the batch size of 300:
        ╵       ╵        ╵     ╵       ╵      ╵              ╵       ╵          
 ```
 
-The code snippets show that for the size of 300 more memory is used in total (344MB compared to 150MB) which is expected as we are processing more text in one go. Further we can see that the majority of the time is spent on processing the data (line 71). Loading the SpaCy model (line 59) from the *Net (MB)* column uses between 20MB and 51MB and up to 21% of the time running the code.
+The code snippets show that for the batch size of 300 more memory is used in total (344MB compared to 150MB) which is expected as we are processing more text in one go. Further we can see that the majority of the time is spent on processing the data (line 71). Loading the SpaCy model (line 59) from the *Net (MB)* column uses between 20MB and 51MB and up to 21% (19% + 2% coming from the output of batch size 300) of the time running the code.
 
 You will notice that in both of these the code snippet at the end of each line either does not exist or has been cut off. I don't know why this happens when the output has come the HEC but I know that if I run this code on my own Ubuntu machine I do not have this problem and the output should look like this:
 
