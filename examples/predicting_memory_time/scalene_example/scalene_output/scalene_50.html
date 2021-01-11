@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #000080}
+.r2 {font-weight: bold}
+.r3 {color: #008000; background-color: #f8f8f8; font-weight: bold}
+.r4 {color: #000000; background-color: #f8f8f8}
+.r5 {color: #0000ff; background-color: #f8f8f8; font-weight: bold}
+.r6 {background-color: #f8f8f8}
+.r7 {color: #800000; font-weight: bold}
+.r8 {color: #0000ff; background-color: #f8f8f8}
+.r9 {color: #ba2121; background-color: #f8f8f8}
+.r10 {color: #19177c; background-color: #f8f8f8}
+.r11 {color: #408080; background-color: #f8f8f8; font-style: italic}
+.r12 {color: #0000ff}
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+</style>
+</head>
+<html>
+<body>
+    <code>
+        <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">              Memory usage: <span class="r1">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> (max: 237.00MB)              
+                tagging.py: % of time = 100.00% out of  28.66s.                
+       ╷       ╷        ╷     ╷       ╷      ╷              ╷       ╷          
+ <span class="r2"> Line </span>│<span class="r2">Time % </span>│<span class="r2">Time %  </span>│<span class="r2">Sys  </span>│<span class="r2">Mem %  </span>│<span class="r2">Net   </span>│<span class="r2">Memory usage  </span>│<span class="r2">Copy   </span>│<span class="r2">         </span> 
+       │<span class="r2">Python </span>│<span class="r2">native  </span>│<span class="r2">%    </span>│<span class="r2">Python </span>│<span class="r2">(MB)  </span>│<span class="r2">over time / % </span>│<span class="r2">(MB/s) </span>│<span class="r2">tagging… </span> 
+╺━━━━━━┿━━━━━━━┿━━━━━━━━┿━━━━━┿━━━━━━━┿━━━━━━┿━━━━━━━━━━━━━━┿━━━━━━━┿━━━━━━━━━╸
+     1 │       │        │     │       │      │              │       │<span class="r3">import</span><span class="r4">…</span>   
+     2 │       │        │     │   57% │   21 │▁▁▁▁▁▁        │       │<span class="r3">import</span><span class="r4">…</span>   
+     3 │       │        │     │       │      │              │       │<span class="r3">from</span><span class="r4"> </span><span class="r5">p…</span>   
+     4 │       │        │     │       │      │              │       │<span class="r3">from</span><span class="r4"> </span><span class="r5">t…</span>   
+     5 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+     6 │<span class="r7">   56%</span> │<span class="r7">     3%</span> │ 46% │       │   45 │<span class="r7">▂▂▂▂▂▂▂▂▂ 73%</span> │     6 │<span class="r3">import</span><span class="r4">…</span>   
+     7 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+     8 │       │        │     │       │      │              │       │<span class="r3">def</span><span class="r4"> </span><span class="r8">fi…</span>   
+     9 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r9">'''</span>   
+    10 │       │        │     │       │      │              │       │<span class="r4">    :p…</span>   
+    11 │       │        │     │       │      │              │       │<span class="r4">    :r…</span>   
+    12 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r9">'''</span>   
+    13 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r3">re…</span>   
+    14 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    15 │       │        │     │       │      │              │       │<span class="r3">def</span><span class="r4"> </span><span class="r8">yi…</span>   
+    16 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r9">'''</span>   
+    17 │       │        │     │       │      │              │       │<span class="r4">    Gi…</span>   
+    18 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r3">yi…</span>   
+    19 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    20 │       │        │     │       │      │              │       │<span class="r4">    A …</span>   
+    21 │       │        │     │       │      │              │       │<span class="r4">    li…</span>   
+    22 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    23 │       │        │     │       │      │              │       │<span class="r4">    :p…</span>   
+    24 │       │        │     │       │      │              │       │<span class="r4">    :r…</span>   
+    25 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    26 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r9">'''</span>   
+    27 │       │        │     │  100% │    7 │▁             │       │<span class="r4">    </span><span class="r3">wi…</span>   
+    28 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    29 │       │        │     │  100% │   -3 │▁▁▁▁▁         │       │<span class="r4">      …</span>   
+    30 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    31 │       │        │     │       │   -2 │              │       │<span class="r4">      …</span>   
+    32 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    33 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    34 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    35 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    36 │       │        │     │       │   -8 │              │       │<span class="r4">      …</span>   
+    37 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    38 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    39 │       │        │     │       │      │              │       │<span class="r3">if</span><span class="r4"> </span><span class="r10">__n…</span>   
+    40 │       │        │     │       │      │              │       │<span class="r4">    pr…</span>   
+    41 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    42 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    43 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    44 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    45 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    46 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    47 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    48 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    49 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    50 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    51 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    52 │       │        │     │       │      │              │       │<span class="r4">    ar…</span>   
+    53 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    54 │       │        │     │       │      │              │       │<span class="r4">    te…</span>   
+    55 │       │        │     │       │      │              │       │<span class="r4">    ou…</span>   
+    56 │       │        │     │       │      │              │       │<span class="r4">    ba…</span>   
+    57 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    58 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r11"># …</span>   
+    59 │   12% │     1% │     │   60% │   16 │▁▁▁▁▁         │     2 │<span class="r4">    nl…</span>   
+    60 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r11"># …</span>   
+    61 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    62 │       │        │     │       │      │              │       │<span class="r4">    ba…</span>   
+    63 │       │        │     │       │      │              │       │<span class="r6">       </span>   
+    64 │       │        │     │       │      │              │       │<span class="r4">    </span><span class="r11"># …</span>   
+    65 │       │        │     │       │      │              │       │<span class="r4">    pa…</span>   
+    66 │       │        │     │       │      │              │       │<span class="r4">    nu…</span>   
+    67 │       │        │     │       │    8 │▁             │       │<span class="r4">    </span><span class="r3">wi…</span>   
+    68 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    69 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    70 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    71 │   27% │     1% │ 15% │   87% │  115 │▂▂▂▂          │    31 │<span class="r4">      …</span>   
+    72 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    73 │       │        │     │  100% │   -1 │▁▁▁           │       │<span class="r4">      …</span>   
+    74 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    75 │       │        │     │       │      │              │       │<span class="r4">      …</span>   
+    76 │       │        │     │  100% │    1 │▁             │       │<span class="r4">      …</span>   
+    77 │       │        │     │       │   -8 │              │       │<span class="r4">      …</span>   
+       ╵       ╵        ╵     ╵       ╵      ╵              ╵       ╵          
+generated by the <a href="https://github.com/emeryberger/scalene"><span class="r12">scalene</span></a> profiler                                               
+</pre>
+    </code>
+</body>
+</html>

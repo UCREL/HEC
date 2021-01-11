@@ -1,0 +1,9 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - spacy=2.3.5
+  - pip:
+    - scalene==1.1.12
