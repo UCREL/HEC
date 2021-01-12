@@ -34,13 +34,19 @@ We assume that you have Python >= 3.6.1 and are running either Linux, Mac, or an
 
 Using Pip:
 
-1. Install the required pips: `pip install -r requirements.txt`
-2. run `./scalene.sh` 
+1. **(Optional)** You can create a conda environment first as a full python virtual environemnt before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a conda environment for this: `conda create -n scalene-example python=3.8`
+2. Install the required pips: `pip install -r requirements.txt`
+3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
+4. run `bash scalene.sh` 
+5. **(Optional)** to remove the conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
 
 Using conda:
 
-1. Install the required pips: `conda create -n scalene-example --file ./environment.yaml`
-2. run `./scalene.sh`
+1. Install the required pips: `conda env create -n scalene-example --file ./environment.yaml`
+2. Activate the new conda environment `conda activate scalene-example`
+3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
+4. run `bash scalene.sh`
+5. If you want to remove this conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
 
 ## Scalene output
 
