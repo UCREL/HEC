@@ -4,6 +4,6 @@ channels:
 dependencies:
   - python=3.8
   - pip
-  - spacy=2.3.5
   - pip:
+    - spacy==2.3.5
     - scalene==1.1.12
