@@ -96,6 +96,15 @@ The HEC has a lot of pre-installed software packages, however as software packag
 
 Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./install_packages](./install_packages).
 
+## Job submission examples
+
+In this section we will have multiple different examples of how to submit jobs to the HEC, each example will cover a slightly different edge case whether that is an edge case of the HEC or the example itself e.g. inference/tagging data compared to training a machine learning model. Some examples may build upon the previous examples and all examples assume that you understand the [custom software installation process](#custom-software-installation).
+
+1. Predicting the required amount of memory and compute time. This will show case
+2. Predicting the compute time (this is mainly useful for GPU specific jobs).
+3. Predicting the required amount of GPU memory.
+
+
 ## Presentations about the HEC
 
 1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
