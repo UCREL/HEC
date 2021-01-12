@@ -116,7 +116,7 @@ And when using the batch size of 300:
 
 The code snippets show that for the batch size of 300 more memory is used in total (344MB compared to 150MB) which is expected as we are processing more text in one go. Further we can see that the majority of the time is spent on processing the data (line 71). Loading the SpaCy model (line 59) from the *Net (MB)* column uses between 20MB and 51MB and up to 21% (19% + 2% coming from the output of batch size 300) of the time running the code.
 
-You will notice that in both of these the code snippet at the end of each line either does not exist or has been cut off. I don't know why this happens when the output has come the HEC but I know that if I run this code on my own Ubuntu machine I do not have this problem and the output should look like this:
+You will notice that in both of these the code snippet at the end of each line either does not exist or has been cut off. I don't know why this happens when the output has come the HEC but I know that if I run this code on my own Ubuntu and Mac machine I do not have this problem and the output should look like this:
 
 ``` python
                                                                      Memory usage: ▅▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅ (max: 206.00MB)                                                                      

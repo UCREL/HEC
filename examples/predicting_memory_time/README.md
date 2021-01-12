@@ -62,12 +62,12 @@ With all of these tools some can be useful when running your main code program r
 
 ### Recommendations
 
-1. Use either [resource library](https://docs.python.org/3.7/library/resource.html) (for windows [psutil library](https://github.com/giampaolo/psutil)) to find an accurate measure of amount of memory used compared to just relying on the [Scalene library](https://github.com/emeryberger/scalene). I have found memory reporting issues with Scalene when I used it on my Mac laptop, the issue was worse when I installed SpaCy through Conda forge rather than pip.
+1. Use either [resource library](https://docs.python.org/3.7/library/resource.html) (for windows [psutil library](https://github.com/giampaolo/psutil)) to find an accurate measure of peak memory used compared to just relying on the [Scalene library](https://github.com/emeryberger/scalene). I find that all other features of Scalene like *Net (MB)* to be accurate.
 
 ## Examples showing how to use the tools
 
 1. Example of how to use the 
-1. Example of how to use Scalene can be found at [./scalene_example/README.md](./scalene_example/README.md).
+2. Example of how to use Scalene can be found at [./scalene_example/README.md](./scalene_example/README.md).
 
 
 
