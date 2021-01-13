@@ -2,6 +2,8 @@
 
 **Note** only use a profiler like Scalene when debugging/testing your code and not when you want to run your code on the full task as the profiler will slow your code down and also should not be needed.
 
+For those that have read the example of how to use the resource and time libraries at [../resource_and_time_example/README.md](./resource_and_time_example/README.md), the [./tagging.py](./tagging.py) python script performs the same function but does not contain the timing or resource code that is logged as we are demonstrating the scalene profiler in this example. 
+
 This example shows how to use the [Scalene profiler](https://github.com/emeryberger/scalene). This example will run the profiler over the [./tagging.py](./tagging.py) with a batch size of 50 and 300 whereby the profiler output is saved to [./scalene_output/scalene_50.txt](./scalene_output/scalene_50.txt) and [./scalene_output/scalene_300.txt](./scalene_output/scalene_300.txt) respectively. The [./tagging.py](./tagging.py) script runs the SpaCy English small Named Entity Recognition (NER) model over the Alice in Wonderland text, which can be found at [./alice-in-wonderland.txt](./alice-in-wonderland.txt), and outputs the found entities to the [./output.tsv](./output.tsv) file.
 
 
@@ -34,7 +36,7 @@ We assume that you have Python >= 3.6.1 and are running either Linux, Mac, or an
 
 Using Pip:
 
-1. **(Optional)** You can create a conda environment first as a full python virtual environemnt before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a conda environment for this: `conda create -n scalene-example python=3.8`
+1. **(Optional)** You can create a conda environment first as a full python virtual environment before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a conda environment for this: `conda create -n scalene-example python=3.8`
 2. Install the required pips: `pip install -r requirements.txt`
 3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
 4. run `bash scalene.sh` 

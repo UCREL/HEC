@@ -1,16 +1,21 @@
 # Hints and Tools for monitoring your jobs 
 
-The main point of this README is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from:
+The main point of this README is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your code that you submit as a job on the HEC:
 
 1. The case of tagging, using a machine learning model to infer/predict on data, or training machine learning models the time and memory requirements will be dependent on the **batch size** which is the amount of data you tag or train from in one go. The larger the batch size the more memory will be required, but the quicker the model should run/train. **Note** if your are processing/training on data that can vary in size e.g. text each batch size may contain, for instance, 32 sentences but those 32 sentences are very likely to vary in length thus the longer the sentences are the more memory is required to process them (this only really applies to deep learning methods that represent sentences as sequence of varying word lengths, if using a bag of words model/representation this problem can be ignored.).
 2. The case of Bag Of Words (BOW) model for Natural Language Processing (NLP) I would suspect the main memory requirement (not sure about time but I would suspect time as well) will be based on the size of your BOWs e.g. if you are going to represent all words in your BOW vector or just the top 100 words, the more words you represent the more memory you will require.
 3. For deep learning models e.g. RNNs, Transformers, etc when training them the memory requirements (if you cannot fit everything into a the batch size you want you have to [accumulate the gradients](https://medium.com/huggingface/training-larger-batches-practical-tips-on-1-gpu-multi-gpu-distributed-setups-ec88c3e51255) thus taking longer to train.) will be based on the number of parameters in your model, which is mainly based on the hidden sizes of your model. Knowing some of the differences between the models is useful e.g. transformers increase in computation non-linearly with the number of words whereas RNN based models increase non-linearly with the dimension of the hidden size see [table 1 of Attention Is All You Need, Vaswani et al. 2017](https://arxiv.org/pdf/1706.03762.pdf). A good guide for understanding transformers is by [Jay Alammar](https://jalammar.github.io/illustrated-transformer/), [for RNN and CNN Stanford has a good overview](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks), and another good overview of [RNN specifically LSTM Christopher Olah.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
+## Table of contents
+
+1. [Tools](#tools)
+2. [Examples showing how to use the tools](#examples-showing-how-to-use-the-tools)
+
 ## Tools
 
 Some tools for discovering the amount of memory, CPU time, and transfer of data being used. For tools looking at the amount of memory used in the majority of cases we are mainly interested in the peak amount of memory used as we want to determine how much memory is required to run the job/code and thus determine how much memory we need to request for that job:
 
-1. **Linux and Mac** you can use the Python Native [resource library](https://docs.python.org/3.7/library/resource.html), which uses the `getrlimit` command from the underlying OS, the [man page can be found here](https://man7.org/linux/man-pages/man3/vlimit.3.html). The main memory statistic that is of use is the peak memory used to get this in **KB** for Linux and **Bytes** for Mac (this my change over time so check the man pages for `getrlimit` on your OS) run at the end of your script (this is what we used in the [./example/tagging.py](./example/tagging.py) script):
+1. **Linux and Mac** you can use the Python Native [resource library](https://docs.python.org/3.7/library/resource.html), which uses the `getrusage` command from the underlying OS, the [man page can be found here](https://man7.org/linux/man-pages/man2/getrusage.2.html). The main memory statistic that is of use is the peak memory used to get this in **KB** for Linux and **Bytes** for Mac (this my change over time so check the man pages for `getrusage` on your OS) run at the end of your script:
 ``` python
 from resource import getrusage, RUSAGE_SELF
 getrusage(RUSAGE_SELF).ru_maxrss
@@ -66,7 +71,7 @@ With all of these tools some can be useful when running your main code program r
 
 ## Examples showing how to use the tools
 
-1. Example of how to use the 
+1. Example of how to use the [resource library](https://docs.python.org/3.7/library/resource.html) and the Python [time library](https://docs.python.org/3.7/library/time.html) to find the maximum amount of memory required for a tagging task and the average time it will take to process a batch. Code can be found at [./resource_and_time_example/README.md](./resource_and_time_example/README.md).
 2. Example of how to use Scalene can be found at [./scalene_example/README.md](./scalene_example/README.md).
 
 
