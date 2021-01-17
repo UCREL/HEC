@@ -1,0 +1,13 @@
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - git
+  - pytorch
+  - cudatoolkit=10.2
+  - pip:
+    - stanza==1.1.1
+    - nvidia-ml-py3
+    - git+https://github.com/apmoore1/stanza-batch.git@main

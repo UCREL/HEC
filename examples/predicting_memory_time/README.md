@@ -64,98 +64,15 @@ print(timeit.repeat(stmt=code_to_run, setup=setup_code, number=100, repeat=3))
 5. **All OS** (for Windows it states it runs on Ubuntu in Windows [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)) another tool is a profiler of which [Scalene library](https://github.com/emeryberger/scalene) has been recommended. Can be installed through pip e.g. `pip install scalene`. A profiler analysis your code line by line to show you which lines are using the most memory, CPU time, and transfer of data. Profilers are useful as they can show which lines of code are using up the most resources, this can then allow you to potentially improve your code. An example of how to use the `scalene` profile and the output of the profiler can be found in [./scalene_example/README.md](./scalene_example/README.md).
 
 With all of these tools some can be useful when running your main code program rather than a test program to determine how much memory or time it is going to take. You shouldn't run a profiler like `scalene` when running your main code as it will just slow down your program, whereas it would be useful to log every *N* batches how long your program has taken to run those *N* batches whether that is for tagging data or training a machine learning model so that you can get a better idea on when your code is going to finish.
+6. Keeping track of GPU usage there are various tools that you can use, of which the [fastai docs have a great guide on these various tools.](https://docs.fast.ai/dev/gpu.html#pynvml) The one tool to highlight for Python is the [pynvml](https://pypi.org/project/nvidia-ml-py3/) library as it can quickly query the GPU without having to call `nvidia-smi`. At the current moment I do not know of a tool that outputs peak memory usage of the GPU, I know that PyTorch has various functions for [max_memory_allocated](https://pytorch.org/docs/stable/cuda.html#torch.cuda.max_memory_allocated) and [max_memory_reserved](https://pytorch.org/docs/stable/cuda.html#torch.cuda.max_memory_reserved), but these functions [do not take into account the memory required to run PyTorch on the GPU which can be 0.5GB](https://docs.fast.ai/dev/gpu.html#unusable-gpu-ram-per-process).
 
 ### Recommendations
 
 1. Use either [resource library](https://docs.python.org/3.7/library/resource.html) (for windows [psutil library](https://github.com/giampaolo/psutil)) to find an accurate measure of peak memory used compared to just relying on the [Scalene library](https://github.com/emeryberger/scalene). I find that all other features of Scalene like *Net (MB)* to be accurate.
+2. Using a tool like [pynvml](https://pypi.org/project/nvidia-ml-py3/) for GPU memory monitoring compared to the information that is generated for you from the HEC about the GPU usage, see the [Comparing Results section in the GPU example for more details why.](./gpu_example/README.md#comparing-results).
 
 ## Examples showing how to use the tools
 
 1. Example of how to use the [resource library](https://docs.python.org/3.7/library/resource.html) and the Python [time library](https://docs.python.org/3.7/library/time.html) to find the maximum amount of memory required for a tagging task and the average time it will take to process a batch. Code can be found at [./resource_and_time_example/README.md](./resource_and_time_example/README.md).
 2. Example of how to use Scalene can be found at [./scalene_example/README.md](./scalene_example/README.md).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-In this example we will show how to roughly predict the amount of memory and compute time that is required for a job. This is useful to know as many of the jobs that you will submit to the HEC will required more than 500MB of memory, which is the [default max memory size](https://answers.lancaster.ac.uk/display/ISS/Running+large+memory+jobs+on+the+HEC) of a single node CPU job. The compute time is useful in general so that you know roughly how long a job may take.
-
-As specified in the [running large memory jobs on the HEC](https://answers.lancaster.ac.uk/display/ISS/Running+large+memory+jobs+on+the+HEC) you need to specify in the job script (script with the `.com` extension) the max amount of memory required if you want to use more than 500MB.
-
-This example will show case how you can roughly find out the memory requirements of your job, using only the HEC and not your own computer.
-
-## Tagging data as the example use case
-
-This example is some what based on this [blog post](https://pythonspeed.com/articles/estimating-memory-usage/) by Itamar Turner-Trauring, the blog post is more detailed and easier to follow I think, but this example is tailored to Natural Language Processing.
-
-The task this example is going to be based on is **tagging data** using SpaCy, whereby in this example we are going to find all of the Named Entities using the English SpaCy small Named Entity Recognizer (NER) model in the book Alice in wonderland. The Alice in wonderland text can be found at [./example/alice-in-wonderland.txt](./example/alice-in-wonderland.txt) (this was downloaded from [project Gutenberg](https://www.gutenberg.org/ebooks/11)). The full code for this example can be found at [./example/tagging.py](./example/tagging.py) and the Conda install environment file [./example/environment.yaml](./example/environment.yaml).
-
-The main objective of this is to determine how much memory we think we will need if we are going to either tag up the whole book (I know this can be done easily as the book is small but this is somewhat a toy example) or if this book is typical of a collection of books and thus later on going to tag many books using the same method but modifying the code so that it loops over a collection of books rather than just the one.
-
-The main component in this example that will determine how long in time and how much memory it will take to tag the book is the `batch size`, the batch size is the amount of text (in this case the amount of text is determined by number paragraphs) that will be processed by the NER model in one go. The script [./example/tagging.py](./example/tagging.py) allows us through command line arguments to:
-
-1. Process the whole text (`text`) or just a batch (`batch`), **OR** find the number of paragraphs in the text without any NER processing (`number_paragraphs`).
-2. The size of the batch e.g. `50` whereby 50 here means we will process 50 paragraphs of text in one go. 
-
-Given this we should be able to roughly figure out the amount of memory and the time it will take to process the whole text by only processing one batch of the text with a given batch size. To test this we will use the [./example/tagging.py](./example/tagging.py) and the alice in wonderland text perform some experiments on the HEC showing this, to do so:
-
-1. Transfer the [./example](./example) directory to your home directory on the HEC: `scp -r example/ username@wayland.hec.lancaster.ac.uk:./`
-2. Create the conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./example/install.com](./example/install.com) job e.g. `qsub install.com`
-3. We can now run the [./example/memory_time.sh](./example/memory_time.sh) script which will state the number of paragraphs in the Alice text, and then run the script over one batch of size 50, 100, and 150 and then to finish the whole text. The script will then print out the time it takes for each batch (or in the last case to process the whole text) to process and the peak amount of memory used. To run the script submit the following job `qsub process.com`
-4. After the job has finished within the output file in my case it is `time-memory.o6575917` it should contain something similar to the following below `cat time-memory.o6575917`:
-``` bash
-Number of paragraphs in text: 881
-Script arguments: process number_paragraphs and batch size 0
-Peak amount of memory used: 91.84 MB
-Time taken: 0.15294885635375977
--------------End of Script------------
-
-Script arguments: process batch and batch size 50
-Peak amount of memory used: 115.624 MB
-Time taken: 0.15895438194274902
--------------End of Script------------
-
-Script arguments: process batch and batch size 100
-Peak amount of memory used: 146.656 MB
-Time taken: 0.26904869079589844
--------------End of Script------------
-
-Script arguments: process batch and batch size 150
-Peak amount of memory used: 166.828 MB
-Time taken: 0.37573981285095215
--------------End of Script------------
-
-Script arguments: process text and batch size 50
-Peak amount of memory used: 123.848 MB
-Time taken: 1.7628285884857178
--------------End of Script------------
-```
-
-We can see from this Alice in wonderland contains 881 paragraphs and that each time we increase the batch size by 50 it adds between 31 and 20MB of memory but with the batch size increasing the time taken per paragraph decreases e.g. batch size 150 = ~0.0025s, 100 = ~0.0026s, and 50 = ~0.0025s. The prediction of running the whole text with a batch size of 50 using 115.624MB of memory was fairly close, 123.848MB. The time prediction was a fair bit of though as multiplying the time taken for one batch of 50 = 0.1529s multiplied by the number of batches in the whole text = (881/50 = 18) is (18 * 0.1529 = 2.75s) which is 56% more than the actually time it took of 1.76s.
-
-The reason for the differences in time and memory is most likely due to batches containing paragraphs of varying length e.g. the first batch might contain paragraphs that are on average a bit smaller thus not requiring as much memory and not taking as long to process as the average batch.
-
-From this we can see that if we predicting that the memory we required to process the whole text is 115.624MB for a batch size of 50 we probably want to add some more memory just in case, to be generous I would like at least 50% more memory than I think I need in doing so you know you should be somewhat safe. Even though our time prediction was out by 56%, this estimate could have been better if we ran several batches of 50 to get a more accurate time estimate but this takes more initial time which could be better spent running the main experiment (in this case run the NER over the whole book).
-
-You should notice a new file called `Alice-Entities.tsv` which contains the Named Entities found in the Alice in wonderland book with the first two entries being:
-```tsv
-0	Wonderland	GPE	54	64
-0	Lewis Carroll	PERSON	69	82
-```
+3. Example of how to use [pynvml](https://pypi.org/project/nvidia-ml-py3/), can be found at [./gpu_example/README.md](./gpu_example/README.md). In this example we run Stanza on the GPU and show how you can find peak GPU memory usage and other GPU memory information. Further we show that you cannot estimated the GPU memory usage through RAM usage on a CPU version of the model.
