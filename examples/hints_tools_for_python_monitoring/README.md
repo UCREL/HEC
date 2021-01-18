@@ -1,6 +1,6 @@
-# Hints and Tools for monitoring your jobs 
+# Hints and Tools for monitoring your Python jobs 
 
-The main point of this README is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your code that you submit as a job on the HEC:
+The main point of this README is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your Python code that you submit as a job on the HEC:
 
 1. The case of tagging, using a machine learning model to infer/predict on data, or training machine learning models the time and memory requirements will be dependent on the **batch size** which is the amount of data you tag or train from in one go. The larger the batch size the more memory will be required, but the quicker the model should run/train. **Note** if your are processing/training on data that can vary in size e.g. text each batch size may contain, for instance, 32 sentences but those 32 sentences are very likely to vary in length thus the longer the sentences are the more memory is required to process them (this only really applies to deep learning methods that represent sentences as sequence of varying word lengths, if using a bag of words model/representation this problem can be ignored.).
 2. The case of Bag Of Words (BOW) model for Natural Language Processing (NLP) I would suspect the main memory requirement (not sure about time but I would suspect time as well) will be based on the size of your BOWs e.g. if you are going to represent all words in your BOW vector or just the top 100 words, the more words you represent the more memory you will require.

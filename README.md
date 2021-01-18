@@ -86,7 +86,7 @@ smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
 
 ## Job submission/monitoring
 
-The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/ISS/Submitting+jobs+on+the+HEC) and [monitoring jobs](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) is very good and very detailed, thus please read these before reading the next sections. The only addon to HEC help guide that is provided in the README is the cheat sheet of HEC commands which can be found in the [HEC cheat sheet section](#hec-cheat-sheet).
+The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/ISS/Submitting+jobs+on+the+HEC) and [monitoring jobs](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) is very good and very detailed, thus please read these before reading the next sections. In this README we also include a cheat sheet of HEC commands which can be found in the [HEC cheat sheet section](#hec-cheat-sheet).
 
 ## Software installation
 
@@ -95,6 +95,12 @@ The HEC has a lot of pre-installed software packages, however as software packag
 ### Custom software installation
 
 Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./install_packages](./install_packages).
+
+## Hints and Tools for monitoring your **Python** jobs 
+
+The main point of this section is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your code that you submit as a job on the HEC. The [monitoring tools that the HEC provide](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) are still useful but are more coarse grained and non-language specific.
+
+The hints and tools section can be found at [./examples/hints_tools_for_python_monitoring](./examples/hints_tools_for_python_monitoring) and it covers tools with examples on monitoring RAM, CPU time, and GPU memory use in detail.
 
 ## Job submission examples
 
