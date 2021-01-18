@@ -7,13 +7,15 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
 1. [Brief overview of the HEC resources](#brief-overview-of-the-hec-resources)
     1. [Computational resources](#computational-resources)
     2. [File storage](#file-storage)
-        1. [Scratch storage how to make the most of it](#scratch-storage-how-to-make-the-most-of-it)
+        1. [Scratch storage](#scratch-storage)
         2. [Transferring files](#transferring-files)
         3. [Luna](#luna)
 2. [Job submission/monitoring](#job-submissionmonitoring)
 3. [Software installation](#software-installation)
-4. [Presentations about the HEC](#presentations-about-the-hec)
-5. [HEC cheat sheet](#hec-cheat-sheet)
+4. [Hints and Tools for monitoring your **Python** jobs](#hints-and-tools-for-monitoring-your-python-jobs)
+5. [Presentations about the HEC](#presentations-about-the-hec)
+6. [HEC cheat sheet](#hec-cheat-sheet)
+7. [External Resources/Guides](#external-resourcesguides)
 
 ## Brief overview of the HEC resources
 
@@ -40,15 +42,9 @@ To check the amount of storage used run `gpfsquota`
 
 For a more detailed guide on the file storage of the [HEC see the relevant help page.](https://answers.lancaster.ac.uk/display/ISS/Using+Filestore+on+the+HEC).
 
-#### Scratch storage how to make the most of it
+#### Scratch storage
 
-The 10TB of scratch area is really useful. However files will be deleted end of day **if last modified time is 4 weeks old** (this point is really important as a lot of files you may have downloaded will likely have a last modified time of more than 4 weeks). Therefore when using the scratch make sure to update the last modified time if you want the files to be kept. To do this you can run the [./update_dir.sh](./update_dir.sh) script. This script takes one argument the file directory which you would like to update all last modified time for all files in that directory and all sub directories to the time and date of `now`. Example:
-
-``` bash
-bash update_dir.sh ./presentations
-```
-
-That would change the last modified date and time for all files in `./presentations` to `now`. **This should be fine to run on the login node.**
+The 10TB of scratch area is really useful. However files will be deleted end of day **if last modified time is 4 weeks old** (this point is really important as a lot of files you may have downloaded will likely have a last modified time of more than 4 weeks).
 
 #### Transferring files
 
@@ -98,17 +94,16 @@ Even though the HEC provides a lot of different environment setups as shown from
 
 ## Hints and Tools for monitoring your **Python** jobs 
 
-The main point of this section is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your code that you submit as a job on the HEC. The [monitoring tools that the HEC provide](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) are still useful but are more coarse grained and non-language specific.
+The main point of this section is to provide you with the tools and knowledge of understanding where the main cause of increasing memory, CPU time, and GPU memory is likely to come from in your code that you submit as a job on the HEC. The [monitoring tools that the HEC provide](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) are still useful but are more coarse grained but non-language specific. These guides show how you can work out how much memory is required to process a batch of data for tagging/inference and the time it would take.
 
 The hints and tools section can be found at [./examples/hints_tools_for_python_monitoring](./examples/hints_tools_for_python_monitoring) and it covers tools with examples on monitoring RAM, CPU time, and GPU memory use in detail.
 
 ## Job submission examples
 
-In this section we will have multiple different examples of how to submit jobs to the HEC, each example will cover a slightly different edge case whether that is an edge case of the HEC or the example itself e.g. inference/tagging data compared to training a machine learning model. Some examples may build upon the previous examples and all examples assume that you understand the [custom software installation process](#custom-software-installation).
+In this section we will have multiple different examples of how to submit jobs to the HEC, each example will cover a slightly different edge case whether that is an edge case of the HEC or the example itself e.g. inference/tagging data compared to training a machine learning model. All examples assume that you understand the [custom software installation process](#custom-software-installation).
 
-1. Predicting the required amount of memory and compute time. This will show case
-2. Predicting the compute time (this is mainly useful for GPU specific jobs).
-3. Predicting the required amount of GPU memory.
+1. Running a single job -- example is tagging Alice in Wonderland book with named entities using SpaCy.
+2. Running multiple jobs -- same as example 1 above, but tagging multiple books with named entities **using multiple nodes/computers on the HEC**.
 
 
 ## Presentations about the HEC
@@ -116,3 +111,12 @@ In this section we will have multiple different examples of how to submit jobs t
 1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
 
 ## HEC cheat sheet
+
+
+## External Resources/Guides
+
+Here is a list of external resources that might be of use.
+
+### GPU resources
+
+1. [William Falcon 7 tips to maximize PyTorch performance.](https://towardsdatascience.com/7-tips-for-squeezing-maximum-performance-from-pytorch-ca4a40951259)
