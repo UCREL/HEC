@@ -25,7 +25,8 @@ The name of the job is `conda-local` this can be changed, if wanted too, to what
 The `CONDA_ENVS_PATH` and `CONDA_PKGS_DIRS` are set to a directory within `$TMPDIR` as by default Conda would use your `Home` file space to save these files to, this is not needed as we are specifying where we want to save the Python environment folder to through the `-p` flag on line 20:
 
 ``` bash
-time -v conda-env create -p $conda_save_location --file CHANGE-$HOME/environment.yaml
+# Specify `command time` as want the time executable rather than the built in time
+command time -v conda-env create -p $conda_save_location --file CHANGE-$HOME/environment.yaml
 ```
 
 The last few lines of the [./install.com](./install.com) script:

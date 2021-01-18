@@ -14,10 +14,11 @@ export CONDA_PKGS_DIRS=$TMPDIR/.conda/pkgs
 conda_save_location=$global_scratch/PACKAGE_NAME
 
 # Only timing so that you can lookup in the error log how long it took to install
-# 
+# Specify `command time` as want the time executable rather than the built in time
+#
 # --file needs to be changed to the location of the environment.yaml 
 # that states what conda needs to install 
-time -v conda-env create -p $conda_save_location --file CHANGE-$HOME/environment.yaml
+command time -v conda-env create -p $conda_save_location --file CHANGE-$HOME/environment.yaml
 
 # Changing last modified time, this is done so that it will stay on 
 # $global_scratch for the calender month

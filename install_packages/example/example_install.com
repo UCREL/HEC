@@ -12,7 +12,7 @@ export CONDA_PKGS_DIRS=$TMPDIR/.conda/pkgs
 
 conda_save_location=$global_scratch/py3.8-gpu-joeynmt
 
-time -v conda-env create -p $conda_save_location --file ./environment.yaml
+command time -v conda-env create -p $conda_save_location --file ./environment.yaml
 
 find $conda_save_location -print | while read filename; do
 	touch -h "$filename"
