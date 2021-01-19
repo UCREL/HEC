@@ -27,7 +27,7 @@ The rest of this tutorial is laid out as follows:
 
 ## Installation
 
-Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has SpaCy installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages/README.md). For this task we also need the SpaCy English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 17-18:
+Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has SpaCy installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages). For this task we also need the SpaCy English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 17-18:
 
 ``` bash
 source activate $HOME/py3.8-single-job
