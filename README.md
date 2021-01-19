@@ -12,10 +12,13 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
         3. [Luna](#luna)
 2. [Job submission/monitoring](#job-submissionmonitoring)
 3. [Software installation](#software-installation)
+    1. [Custom software installation](#custom-software-installation)
 4. [Hints and Tools for monitoring your **Python** jobs](#hints-and-tools-for-monitoring-your-python-jobs)
-5. [Presentations about the HEC](#presentations-about-the-hec)
-6. [HEC cheat sheet](#hec-cheat-sheet)
-7. [External Resources/Guides](#external-resourcesguides)
+5. [Job submission examples](#job-submission-examples)
+6. [Presentations about the HEC](#presentations-about-the-hec)
+7. [HEC cheat sheet](#hec-cheat-sheet)
+8. [External Resources/Guides](#external-resourcesguides)
+    1. [GPU resources](#gpu-resources)
 
 ## Brief overview of the HEC resources
 
@@ -84,6 +87,8 @@ smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
 
 The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/ISS/Submitting+jobs+on+the+HEC) and [monitoring jobs](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC) is very good and very detailed, thus please read these before reading the next sections. In this README we also include a cheat sheet of HEC commands which can be found in the [HEC cheat sheet section](#hec-cheat-sheet).
 
+**Note** When running jobs on the HEC you can use relative paths to files within the same directory as your submission script.
+
 ## Software installation
 
 The HEC has a lot of pre-installed software packages, however as software packages can conflict with each other these software packages are contained into different environment modules. Each environment module contains a different set of software e.g. some contain Python while others do not. For a detailed guide on how to use these environment modules please read the detailed [help page.](https://answers.lancaster.ac.uk/display/ISS/Using+environment+modules+on+the+HEC) From now on we assume that you know about the `module` command and what it does from the information within the help page link just given.
@@ -102,8 +107,8 @@ The hints and tools section can be found at [./examples/hints_tools_for_python_m
 
 In this section we will have multiple different examples of how to submit jobs to the HEC, each example will cover a slightly different edge case whether that is an edge case of the HEC or the example itself e.g. inference/tagging data compared to training a machine learning model. All examples assume that you understand the [custom software installation process](#custom-software-installation).
 
-1. Running a single job -- example is tagging Alice in Wonderland book with named entities using SpaCy.
-2. Running multiple jobs -- same as example 1 above, but tagging multiple books with named entities **using multiple nodes/computers on the HEC**.
+1. Running a single job -- [./examples/single_job](./examples/single_job), this example shows how to tag Alice in Wonderland book with Named Entities using SpaCy.
+2. Running multiple jobs -- same as example 1 above, but tagging multiple books with named entities **using multiple nodes/computers on the HEC**. This is an NLP example of what the [HEC documentation calls an array job, of which this link sends you to the HECs great example of an array job.](https://answers.lancaster.ac.uk/display/ISS/Submitting+multiple+similar+jobs+on+the+HEC)
 
 
 ## Presentations about the HEC
