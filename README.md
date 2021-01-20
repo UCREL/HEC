@@ -64,24 +64,15 @@ For Windows users see the Lancaster [help page.](https://answers.lancaster.ac.uk
 
 (None of this sub-section has been tested yet)
 
-A detailed guide on how to transfer files between Luna and the HEC can be found in this [help page.](https://answers.lancaster.ac.uk/display/ISS/Transferring+files+to+the+HEC+from+luna+or+other+smb-compliant+services) A bit of an extension to that help guide is provided here. As it uses the `smbclient` command of which this would likely require a password it maybe of use to create an authentication file in the following format:
-
-```
-username = <value>
-password = <value>
-```
-
-This file can then be used like so:
-
-```
-smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE //luna/fst
-```
+A detailed guide on how to transfer files between Luna and the HEC can be found in this [help page.](https://answers.lancaster.ac.uk/display/ISS/Transferring+files+to+the+HEC+from+luna+or+other+smb-compliant+services) A bit of an extension to that help guide is provided here, to connect to Luna it uses the [smbclient command](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 
 **By default the `smbclient` only encrypts the login credentials, to encrypt the entire payload add the `-e` flag like so:**
 
 ```
-smbclient -D py/gondor -A /PATH/TO/AUTHENTICATION/FILE -e //luna/fst
+smbclient -k -e -D py/gondor //luna/fst
 ```
+
+The `-k` flag here uses the kerberos ticket system, which removes the need for entering your username and password each time you run the `smbclient` command. The ticket is generated when you login and expiries after 24 hours. To generate a new ticket run the `knit` command to create a new ticket. [See the HEC pages for more details (section `Using kerberos tickets`).](https://answers.lancaster.ac.uk/display/ISS/Transferring+files+to+the+HEC+from+luna+or+other+smb-compliant+services)
 
 ## Job submission/monitoring
 
@@ -108,8 +99,7 @@ The hints and tools section can be found at [./examples/hints_tools_for_python_m
 In this section we will have multiple different examples of how to submit jobs to the HEC, each example will cover a slightly different edge case whether that is an edge case of the HEC or the example itself e.g. inference/tagging data compared to training a machine learning model. All examples assume that you understand the [custom software installation process](#custom-software-installation).
 
 1. Running a single job -- [./examples/single_job](./examples/single_job), this example shows how to tag Alice in Wonderland book with Named Entities using SpaCy.
-2. Running multiple jobs -- same as example 1 above, but tagging multiple books with named entities **using multiple nodes/computers on the HEC**. This is an NLP example of what the [HEC documentation calls an array job, of which this link sends you to the HECs great example of an array job.](https://answers.lancaster.ac.uk/display/ISS/Submitting+multiple+similar+jobs+on+the+HEC)
-
+2. Running multiple similar jobs -- [./examples/multiple_similar_jobs](./examples/multiple_similar_jobs), same as example 1 above, but tagging multiple books with named entities **using more than one node on the HEC for processing at the same time**. This is an NLP example of what the [HEC documentation calls an array job, of which this link sends you to the HECs great example of an array job.](https://answers.lancaster.ac.uk/display/ISS/Submitting+multiple+similar+jobs+on+the+HEC) This makes tagging lots of files a lot quicker as more than one node can be processing files at the same time.
 
 ## Presentations about the HEC
 
