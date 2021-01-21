@@ -27,7 +27,7 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
 The HEC consists of: 
 
 1. Login node -> The computer you login to. This is relatively slow (due to the number of users on the HEC) and should not be used for any computationally expensive tasks e.g. running a model or installing software. Should mainly be used for monitoring and assigning jobs to other nodes/computers on the HEC. Can also be used to modify files e.g. remove files.
-2. CPU based nodes -> At least 445 of which at least 300 are single core nodes with around 4 to 8GB of memory. [Various 16 core nodes with either 64 or 128GB of memory. Various 40 core nodes with 192GB of memory.](https://answers.lancaster.ac.uk/display/ISS/Requesting+specific+node+types+for+jobs+on+the+HEC)
+2. CPU based nodes -> At least 540 are single core nodes with around 4 to 8GB of memory. [Various 16 core nodes with either 64 or 128GB of memory. Various 40 core nodes with 192GB of memory.](https://answers.lancaster.ac.uk/display/ISS/Requesting+specific+node+types+for+jobs+on+the+HEC)
 3. [GPU nodes](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC) -> 2 nodes, whereby each node consists of 3 Nvidia V100 32GB GPUs, 32 CPU cores, and 192GB of memory. 
 
 ### File storage
@@ -84,9 +84,11 @@ The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/
 
 The HEC has a lot of pre-installed software packages, however as software packages can conflict with each other these software packages are contained into different environment modules. Each environment module contains a different set of software e.g. some contain Python while others do not. For a detailed guide on how to use these environment modules please read the detailed [help page.](https://answers.lancaster.ac.uk/display/ISS/Using+environment+modules+on+the+HEC) From now on we assume that you know about the `module` command and what it does from the information within the help page link just given.
 
+The HEC recommends requesting any software that you would like to use on the HEC, that does not already exist, by submitting a request or report via [https://helpcentre.lancaster.ac.uk](https://helpcentre.lancaster.ac.uk). If the software you requested for cannot be installed then please see the [custom software installation sub-section below.](#custom-software-installation) 
+
 ### Custom software installation
 
-Even though the HEC provides a lot of different environment setups as shown from the `module avail`, if you want to install a specific software package it is not clear how this can be done. Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./install_packages](./install_packages).
+Here we show how to create a custom [Conda](https://docs.conda.io/en/latest/) setup. Conda is a "Package, dependency and environment management for any language—Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN, and more." according to the Conda website. Therefore even though this guide is going to be **Python** specific it should be possible to adapt this to other programming languages. The custom software installation guide can be found at [./install_packages](./install_packages).
 
 ## Hints and Tools for monitoring your **Python** jobs 
 
@@ -115,3 +117,9 @@ Here is a list of external resources that might be of use.
 ### GPU resources
 
 1. [William Falcon 7 tips to maximize PyTorch performance.](https://towardsdatascience.com/7-tips-for-squeezing-maximum-performance-from-pytorch-ca4a40951259)
+
+## Acknowledgements
+
+This guide has been funded through the [UCREL research centre](http://ucrel.lancs.ac.uk/).
+
+This guide has been refined and improved upon through the advice and help of Mike Pacey from [Information System Services (ISS) at Lancaster University.](https://www.lancaster.ac.uk/iss/)
