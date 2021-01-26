@@ -105,8 +105,8 @@ To create this Python environment and save it to `$global_storage/py3.8-gpu-joey
 2. Login to the HEC: `ssh username@wayland.hec.lancaster.ac.uk`
 3. Go to the example folder: `cd example`
 4. Run the job: `qsub example_install.com`
-5. Wait some time, mine took 29 minutes and 2 seconds to run, to monitor the job you can use the [`qstat` command](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC). Sometimes you may have to wait some time before the job starts if the HEC is busy.
-6. You can find how long it took to run by `cat` the error file, in my case this was `cat conda-local.e6170308`.
+5. Wait some time, mine took 10 minutes to run (this can be as quick as 3 minutes), to monitor the job you can use the [`qstat` command](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC). Sometimes you may have to wait some time before the job starts if the HEC is busy.
+6. You can find how long it took to run by `cat` the error file, in my case this was `cat conda-local.e6170308`. This error file should have two times ("Elapsed (wall clock) time") as we have two `time` commands, the first for Conda package installation and the second for Pip package installation.
 7. To check if it has successfully installed everything you can check the stdout file, in my case this was `cat conda-local.o6170308`.
 8. To test if everything has worked you should see the directory `py3.8-gpu-joeynmt` in `$global_storage` e.g. `ls $global_storage`. Additionally if you run `module add anaconda3/wmlce` then `source activate $global_storage/py3.8-gpu-joeynmt` then `python --version` should be version 3.8 and you should be able to run without error the following `python -c "import joeynmt; print(joeynmt)"`
 9. Run `source deactivate`
