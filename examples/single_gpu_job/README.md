@@ -41,7 +41,7 @@ Below are the HEC submission settings. [For a detailed guide on the HEC GPU subm
 * `#$ -l ngpus=1` -- number of GPUs on a node we would like to use, in this case it is 1. The maximum this can be at the moment is 3 as the most GPUs per node currently is 3.
 * `#$ -l ncpus=2` -- number of CPUs on a node we would like to use, in this case it is 2. The maximum this can be at the moment is 32.
 * `#$ -l h_vmem=8G` -- amount of RAM/memory on a node we would like to use, in this case it is 8 GB. The maximum this can be at the moment is 192 GB.
-* `#$ -l h_rt=00:05:00` -- **how long the job will run for**, in this case it is 5 minutes. The maximum this can be is 12 hours e.g. 12:00:00. Like a lot of these settings the more you request the longer you may have to wait for your job to be submitted. **NOTE** is yuor job runs longer than the time you have specified the job will be automatically terminated.
+* `#$ -l h_rt=00:05:00` -- **how long the job will run for**, in this case it is 5 minutes. The maximum this can be is 12 hours e.g. 12:00:00. Like a lot of these settings the more you request the longer you may have to wait for your job to be submitted. **NOTE** if your job runs longer than the time you have specified the job will be automatically terminated.
 
 Another detail is that when you want to submit a GPU job you need to switch to the GPU cluster on the terminal through the command:
 
