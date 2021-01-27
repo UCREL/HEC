@@ -27,7 +27,7 @@ The rest of this tutorial is laid out as follows:
 
 ## Main difference between CPU and GPU job
 
-Are the HEC submission settings. [For a detailed guide on the HEC GPU submission settings see the HEC GPU page](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC). In our GPU submission script, [./tagging.com](./tagging.com) we have the following settings:
+Below are the HEC submission settings. [For a detailed guide on the HEC GPU submission settings see the HEC GPU page](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC). In our GPU submission script, [./tagging.com](./tagging.com) we have the following settings:
 
 ``` bash
 #$ -q gpu
