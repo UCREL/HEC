@@ -102,6 +102,7 @@ In this section we will have multiple different examples of how to submit jobs t
 
 1. Running a single job -- [./examples/single_job](./examples/single_job), this example shows how to tag Alice in Wonderland book with Named Entities using SpaCy.
 2. Running multiple similar jobs -- [./examples/multiple_similar_jobs](./examples/multiple_similar_jobs), same as example 1 above, but tagging multiple books with named entities **using more than one node on the HEC for processing at the same time**. This is an NLP example of what the [HEC documentation calls an array job, of which this link sends you to the HECs great example of an array job.](https://answers.lancaster.ac.uk/display/ISS/Submitting+multiple+similar+jobs+on+the+HEC) This makes tagging lots of files a lot quicker as more than one node can be processing files at the same time.
+3. Running a single job of the GPU nodes -- [./examples/single_cpu_job](./examples/single_cpu_job), same as example 1 above but using the GPU node instead of a CPU node.
 
 ## Presentations about the HEC
 

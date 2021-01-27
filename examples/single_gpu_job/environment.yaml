@@ -1,0 +1,6 @@
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - cudatoolkit=10.2
