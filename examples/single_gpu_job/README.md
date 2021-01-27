@@ -88,3 +88,5 @@ python tagging.py ./alice-in-wonderland.txt ./output.tsv 50
 
 The full CPU version of the submission script can be found at [./cpu_tagging.com](./cpu_tagging.com), we found that the CPU version is much quicker 1.8 seconds compared to the GPU 12 seconds. The GPU is best suited to models that have more parameters, the SpaCy small model that we used here does not have many parameters I believe, if you use the medium or large model you would probably get more gains with the GPU compared to CPU. Further we only used a small batch size for both CPU and GPU, when using a batch size of 1000 the CPU and GPU ran in `1.1079` and `0.6495` seconds respectively (for CPU tagging as we are using a larger batch size we need to allocate more memory so I used 8 GB by putting `#$ -l h_vmem=8G` in the [./cpu_tagging.com](./cpu_tagging.com) script).
 
+For more details on amount of RAM and GPU memory that you should request for see the [Hints and Tools for monitoring your **Python** jobs section in the main README.](../../README.md#hints-and-tools-for-monitoring-your-python-jobs)
+
