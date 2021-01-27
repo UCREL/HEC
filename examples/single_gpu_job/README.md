@@ -17,7 +17,7 @@ Given this script we can process the Alice in Wonderland text and extract all Na
 python tagging.py ./alice-in-wonderland.txt ./output.tsv 50 --gpu
 ```
 
-Whereby the Named Entities will be saved to `./output.tsv`. To run this script on the HEC we will have to install the relevant Python dependencies, which is explained next. 
+Whereby the Named Entities will be saved to `./output.tsv`.
 
 The rest of this tutorial is laid out as follows:
 
