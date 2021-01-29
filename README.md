@@ -84,7 +84,7 @@ The HEC help guide on [submitting jobs](https://answers.lancaster.ac.uk/display/
 
 The HEC has a lot of pre-installed software packages, however as software packages can conflict with each other these software packages are contained into different environment modules. Each environment module contains a different set of software e.g. some contain Python while others do not. For a detailed guide on how to use these environment modules please read the detailed [help page.](https://answers.lancaster.ac.uk/display/ISS/Using+environment+modules+on+the+HEC) From now on we assume that you know about the `module` command and what it does from the information within the help page link just given.
 
-The HEC recommends requesting any software that you would like to use on the HEC, that does not already exist, by submitting a request or report via [https://helpcentre.lancaster.ac.uk](https://helpcentre.lancaster.ac.uk). If the software you requested for cannot be installed then please see the [custom software installation sub-section below.](#custom-software-installation) 
+The HEC recommends requesting any software (including Conda environments) that you would like to use on the HEC, that does not already exist, by submitting a request or report via [https://helpcentre.lancaster.ac.uk](https://helpcentre.lancaster.ac.uk). If the software you requested for cannot be installed then please see the [custom software installation sub-section below.](#custom-software-installation) 
 
 ### Custom software installation
 
