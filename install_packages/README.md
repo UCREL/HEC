@@ -34,6 +34,8 @@ If you do add the pip package installation process to the `environment` YAML fil
 
 ## Description of the install script
 
+**Note** instead of creating a batch job you can install the Conda/Python environment using the Login node, but here we show how to install it via a batch job.
+
 The best way to create your own Python environment on the HEC is by making it a batch job in itself, for a detailed overview on how to submit jobs to the HEC see this [guide](https://answers.lancaster.ac.uk/display/ISS/Submitting+jobs+on+the+HEC). The general outline for the batch job can be seen in the [./install.com](./install.com) script whereby line 15 needs updating with where you want to save on disk the Python environment folder. 
 
 The other lines of note are lines 10-12:
