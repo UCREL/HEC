@@ -107,7 +107,8 @@ In this section we will have multiple different examples of how to submit jobs t
 
 ## Presentations about the HEC
 
-1. A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
+1. **Archive only** A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
+2. An updated and more correct version of the 1st presentation has been created that better reflects the current code base/documentation and the HEC. The presentation does not include training a PyTorch model on the GPU but rather tagging data using the GPU instead. [PowerPoint](./presentations/updated_26_11_20/NLP_Group_26_11_20.pptx) and [PDF](./presentations/updated_26_11_20/NLP_Group_26_11_20.pdf) versions of the presentation, no video presentation has been made.
 
 ## HEC cheat sheet
 
