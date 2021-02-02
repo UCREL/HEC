@@ -2,6 +2,8 @@
 
 Resources on how to use the [High End Computing (HEC) cluster at Lancaster University](https://answers.lancaster.ac.uk/display/ISS/High+End+Computing+%28HEC%29+help). To get access to the HEC, [follow this guidance](https://answers.lancaster.ac.uk/display/ISS/Get+access+to+the+HEC), this guidance at the time of writing mainly states that you need to ask your PI/supervisor to apply for an account for you. Once you have an account you can login via SSH e.g. `ssh username@wayland.hec.lancaster.ac.uk` for more details on how to login (e.g. login for Windows users) see this [guidance](https://answers.lancaster.ac.uk/display/ISS/Logging+in+to+the+HEC).
 
+If you have any problem with the examples, have a look at the [Problems that have arisen section](#problems-that-have-arisen) to see if the problem has occurred before, if that does not solve your problem please submit an issue on this Github page.
+
 ## Table of contents
 
 1. [Brief overview of the HEC resources](#brief-overview-of-the-hec-resources)
@@ -19,6 +21,7 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
 7. [HEC cheat sheet](#hec-cheat-sheet)
 8. [External Resources/Guides](#external-resourcesguides)
     1. [GPU resources](#gpu-resources)
+9. [Problems that have arisen](#problems-that-have-arisen)
 
 ## Brief overview of the HEC resources
 
@@ -121,8 +124,29 @@ Here is a list of external resources that might be of use.
 
 1. [William Falcon 7 tips to maximize PyTorch performance.](https://towardsdatascience.com/7-tips-for-squeezing-maximum-performance-from-pytorch-ca4a40951259)
 
+## Problems that have arisen
+
+1. If you are running an install script and your are installing a Conda environment to a directory whereby an existing Conda environment exists, you will probably get the following error:
+
+``` bash
+CondaValueError: prefix already exists
+```
+
+If so either delete this existing Conda environment and run the install script again or you will have to save the new Conda environment to a different new directory.
+
+2. If you are transferring files from Windows to the HEC you may get an error like so in your submission script e.g. scripts with `.com` file extension:
+
+``` bash
+/usr/shared_apps/packages/sge-8.1.8-1/default/spool/comp14-04/job_scripts/7121307: line 2: $'\r': command not found
+/usr/shared_apps/packages/sge-8.1.8-1/default/spool/comp14-04/job_scripts/7121307: line 6: $'\r': command not found
+/usr/shared_apps/packages/sge-8.1.8-1/default/spool/comp14-04/job_scripts/7121307: line 7: /etc/profile^M: No such file or directory
+```
+
+This is due to [Windows adding `\r` character to the end of new lines](https://superuser.com/questions/156516/is-there-a-bash-command-to-convert-r-n-to-n). To overcome this problem run the `dos2unix` command on the submission script that is causing these problems e.g. if the submission script is `install.com` run `dos2unix install.com` this will remove the `\r` character from the `install.com` file and should allow you to run the script through the HEC without error.
+
 ## Acknowledgements
 
 This guide has been funded through the [UCREL research centre](http://ucrel.lancs.ac.uk/).
 
 This guide has been refined and improved upon through the advice and help of Mike Pacey from [Information System Services (ISS) at Lancaster University.](https://www.lancaster.ac.uk/iss/)
+

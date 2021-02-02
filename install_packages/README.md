@@ -14,6 +14,7 @@ In this tutorial we show how you can install your own Python environment given t
     1. [Example](#example)
 4. [Conda and Pip cache management](#conda-and-pip-cache-management)
     1. [Pip cache removal](#pip-cache-removal)
+5. [Updating existing Conda Environments](#updating-existing-conda-environments)
 
 ## How Conda creates an environment
 
@@ -174,3 +175,7 @@ Pip on the other hand caches files but does not share them with conda environmen
 source /etc/profile
 rm -r $global_storage/conda/pip
 ```
+
+## Updating existing Conda Environments
+
+If you want to update an existing Conda environment, it is best to delete the existing Conda environment and re-installing all of the Conda and Python pip packages. This is to ensure that all of the dependencies work within the Conda environment.
