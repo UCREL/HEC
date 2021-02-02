@@ -6,6 +6,6 @@
 
 source /etc/profile
 module add anaconda3/wmlce
-source activate $global_scratch/py3.8-resource-time
+source activate $global_storage/conda_environments/py3.8-resource-time
 
 bash ./tagging.sh

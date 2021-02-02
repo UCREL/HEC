@@ -7,16 +7,16 @@
 source /etc/profile
 module add anaconda3/wmlce
 
-export CONDA_ENVS_PATH=$TMPDIR/.conda/envs
-export CONDA_PKGS_DIRS=$TMPDIR/.conda/pkgs
+export CONDA_ENVS_PATH=$global_storage/conda/envs
+export CONDA_PKGS_DIRS=$global_storage/conda/pkgs
+export PIP_CACHE_DIR=$global_storage/conda/pip
 
-conda_save_location=$global_scratch/py3.8-resource-time
+conda_save_location=$global_storage/conda_environments/py3.8-resource-time
 
 conda-env create -p $conda_save_location --file ./environment.yaml
 
-source activate $global_scratch/py3.8-resource-time
-python -m spacy download en_core_web_sm
-
-find $conda_save_location -print | while read filename; do
-	touch -h "$filename"
-done
+if source activate $conda_save_location; then
+	python -m spacy download en_core_web_sm
+else
+    echo "Could not activate the conda environment at $conda_save_location"
+fi

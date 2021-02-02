@@ -96,7 +96,7 @@ Lastly we show how the memory and time information is useful be comparing the ou
 ### Run on the HEC
 
 1. Transfer this directory to your home directory on the HEC: `scp -r ../resource_and_time_example/ username@wayland.hec.lancaster.ac.uk:./`
-2. Create the conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the conda environment at `$global_scratch/py3.8-resource-time`
+2. Create the Conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$global_storage/conda_environments/py3.8-resource-time`
 3. We can now run the [./tagging.sh](./tagging.sh) by submitting the following job `qsub tagging.com`
 4. You should be able to view the logging/output within the generated stdout file from running `tagging.com`, in my case this is the file called `tagging.o6714707`. You can view the contents of the file with the `cat` command: `cat tagging.o6714707` 
 
@@ -106,21 +106,21 @@ We assume that you have Python >= 3.6.1 and are running either Linux, Mac, or an
 
 Using Pip:
 
-1. **(Optional)** You can create a conda environment first as a full python virtual environment before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a conda environment for this: `conda create -n resource-example python=3.8`
+1. **(Optional)** You can create a Conda environment first as a full python virtual environment before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a Conda environment for this: `conda create -n resource-example python=3.8`
 2. Install the required pips: `pip install -r requirements.txt`
 3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
 4. run `bash tagging.sh` 
 5. The logging/output should be displayed in the terminal/console you are running this script from.
-6. **(Optional)** to remove the conda environment afterwards run; `conda deactivate && conda env remove -n resource-example`
+6. **(Optional)** to remove the Conda environment afterwards run; `conda deactivate && conda env remove -n resource-example`
 
 Using conda:
 
-1. Install the required pips: `conda env create -n resource-example --file ./environment.yaml`
+1. Install the required Conda packages: `conda env create -n resource-example --file ./environment.yaml`
 2. Activate the new conda environment `conda activate resource-example`
 3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
 4. run `bash tagging.sh`
 5. The logging/output should be displayed in the terminal/console you are running this script from.
-6. If you want to remove this conda environment afterwards run; `conda deactivate && conda env remove -n resource-example`
+6. If you want to remove this Conda environment afterwards run; `conda deactivate && conda env remove -n resource-example`
 
 ### Comparing results
 
