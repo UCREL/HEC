@@ -21,4 +21,3 @@ if source activate $conda_save_location; then
 else
     echo "Could not activate the conda environment at $conda_save_location"
 fi
-source activate $global_scratch/py3.8-gpu-example
