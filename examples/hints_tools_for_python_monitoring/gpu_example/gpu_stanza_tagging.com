@@ -9,6 +9,6 @@
 
 source /etc/profile
 module add anaconda3/wmlce
-source activate $global_scratch/py3.8-gpu-example
+source activate $global_storage/conda_environments/py3.8-gpu-example
 
-bash ./gpu_stanza_tagging.sh $global_scratch/stanza_models
+bash ./gpu_stanza_tagging.sh $global_storage/stanza_models

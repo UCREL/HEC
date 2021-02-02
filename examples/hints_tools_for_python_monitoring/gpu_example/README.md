@@ -144,12 +144,10 @@ We now show how to run this code on the HEC and your own machine (we assume you 
 
 ### Run on the HEC
 
-python download_stanza.py $global_scratch/stanza_models
-
 1. Transfer this directory to your home directory on the HEC: `scp -r ../gpu_example/ username@wayland.hec.lancaster.ac.uk:./`
-2. Create the conda environment with the relevant python dependencies and pre-download the Stanza model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the conda environment at `$global_scratch/py3.8-gpu-example`. To pre-download the stanza model the install.com script runs the following `python download_stanza.py $global_scratch/stanza_models`. This downloads the stanza model to the `$global_scratch/stanza_models` directory using the [./download_stanza.py](./download_stanza.py). The reason for pre-downloading the stanza model before using the main tagging script [./gpu_stanza_tagging.py](./gpu_stanza_tagging.py) is so that we don't waste the GPU node's time on downloading the stanza model.
+2. Create the Conda environment with the relevant python dependencies and pre-download the Stanza model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$$global_storage/conda_environments/py3.8-gpu-example`. To pre-download the stanza model the install.com script runs the following `python download_stanza.py $global_storage/stanza_models`. This downloads the stanza model to the `$global_storage/stanza_models` directory using the [./download_stanza.py](./download_stanza.py). The reason for pre-downloading the stanza model before using the main tagging script [./gpu_stanza_tagging.py](./gpu_stanza_tagging.py) is so that we don't waste the GPU node's time on downloading the stanza model.
 3. We need to switch from the cpu cluster to the gpu cluster using the `switch-gpu` command.
-4. We can now run the [./gpu_stanza_tagging.py](./gpu_stanza_tagging.py) by submitting the following job `qsub gpu_stanza_tagging.com`. This will load the pre-downloaded models from the `$global_scratch/stanza_models` directory and perform the two tagging tasks (one for batch size of 50 and the other batch size of 300).
+4. We can now run the [./gpu_stanza_tagging.py](./gpu_stanza_tagging.py) by submitting the following job `qsub gpu_stanza_tagging.com`. This will load the pre-downloaded models from the `$global_storage/stanza_models` directory and perform the two tagging tasks (one for batch size of 50 and the other batch size of 300).
 5. You should be able to view the logging/output within the generated stdout file from running `gpu_stanza_tagging.com`, in my case this is the file called `gpu-stanza-tagging.o2650`. You can view the contents of the file with the `cat` command: `cat gpu-stanza-tagging.o2650`. **Note** Stanza also logs quite a lot of information, we are only interested in the log data that came from `__main__`.
 6. To switch back to the CPU cluster you can run the `switch-cpu` command.
 
@@ -157,15 +155,16 @@ python download_stanza.py $global_scratch/stanza_models
 
 ### Run on your own machine
 
-We assume that you are running either Linux, or another Linux based system (Windows [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)). With regards to Mac at the moment then do not have any nvidia GPUs in their computer/machine lineup thus making them in-compatible for this python GPU code. Further we assume you have a [compatible nvidia GPU](https://developer.nvidia.com/cuda-gpus), I would recommend only installing via conda when using the GPU as it sets up the cuda tool kit which can be difficult to do yourself.
+We assume that you are running either Linux, or another Linux based system (Windows [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)). With regards to Mac at the moment then do not have any nvidia GPUs in their computer/machine lineup thus making them in-compatible for this python GPU code. Further we assume you have a [compatible nvidia GPU](https://developer.nvidia.com/cuda-gpus), I would recommend only installing via Conda when using the GPU as it sets up the Nvidia cuda tool kit which can be difficult to do yourself. Does assume that you have [installed the relevant Nvidia driver for your GPU.](https://docs.anaconda.com/anaconda/user-guide/tasks/gpu-packages/#software-requirements)
 
-Using conda:
+Using Conda:
 
-1. Install the required pips: `conda env create -n gpu-example --file ./environment.yaml`
+1. Install the required Conda packages: `conda env create -n gpu-example --file ./environment.yaml`
 2. Activate the new conda environment `conda activate gpu-example`
-3. run `bash gpu_stanza_tagging.sh ./stanza_models`, whereby the first argument (`./stanza_models`) states which directory to download the stanza model too. 
-4. The logging/output should be displayed in the terminal/console you are running this script from. **Note** Stanza also logs quite a lot of information, we are only interested in the log data that came from `__main__`.
-5. If you want to remove this conda environment afterwards run; `conda deactivate && conda env remove -n gpu-example`
+3. Install the required pips: `pip install -r conda-requirements.txt`
+4. run `bash gpu_stanza_tagging.sh ./stanza_models`, whereby the first argument (`./stanza_models`) states which directory to download the stanza model too. 
+5. The logging/output should be displayed in the terminal/console you are running this script from. **Note** Stanza also logs quite a lot of information, we are only interested in the log data that came from `__main__`.
+6. If you want to remove this conda environment afterwards run; `conda deactivate && conda env remove -n gpu-example`
 
 ### Comparing results
 
