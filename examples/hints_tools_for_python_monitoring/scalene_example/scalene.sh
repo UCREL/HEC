@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir ./scalene_output
+mkdir -p ./scalene_output
 scalene --outfile ./scalene_output/scalene_50.txt  tagging.py alice-in-wonderland.txt output.tsv 50
 scalene --outfile ./scalene_output/scalene_300.txt  tagging.py alice-in-wonderland.txt output.tsv 300
 

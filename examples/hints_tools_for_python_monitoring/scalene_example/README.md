@@ -25,7 +25,7 @@ The profiler does not require any extra code to be added to your scripts, rather
 ## To run on the HEC:
 
 1. Transfer this directory to your home directory on the HEC: `scp -r ../scalene_example/ username@wayland.hec.lancaster.ac.uk:./`
-2. Create the conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the conda environment at `$global_scratch/py3.8-scalene`
+2. Create the Conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$global_storage/conda_environments/py3.8-scalene`
 3. We can now run the [./scalene.sh](./scalene.sh) by submitting the following job `qsub scalene.com`
 4. You should be able to view the outputs from `scalene` in the `scalene_output` directory e.g. to see the output from batch size 50 without the `reduced-profile`: `cat ./scalene_output/scalene_50.txt`
 5. To get the scalene profile outputs into the current directory from the HEC, assuming you are in this directory on your own computer: `scp -r username@wayland.hec.lancaster.ac.uk:./scalene_example/scalene_output .`
@@ -36,19 +36,20 @@ We assume that you have Python >= 3.6.1 and are running either Linux, Mac, or an
 
 Using Pip:
 
-1. **(Optional)** You can create a conda environment first as a full python virtual environment before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a conda environment for this: `conda create -n scalene-example python=3.8`
+1. **(Optional)** You can create a Conda environment first as a full python virtual environment before installing the pip requirements, rather than installing the pips to a virtualenv or directly to your systems python installation. To create a Conda environment for this: `conda create -n scalene-example python=3.8`
 2. Install the required pips: `pip install -r requirements.txt`
 3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
 4. run `bash scalene.sh` 
-5. **(Optional)** to remove the conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
+5. **(Optional)** to remove the Conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
 
 Using conda:
 
-1. Install the required pips: `conda env create -n scalene-example --file ./environment.yaml`
+1. Install the required Conda packages: `conda env create -n scalene-example --file ./environment.yaml`
 2. Activate the new conda environment `conda activate scalene-example`
-3. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
-4. run `bash scalene.sh`
-5. If you want to remove this conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
+3. Install the required Python pips: `pip install -r requirements.txt`
+4. Download the SpaCy NER model `python -m spacy download en_core_web_sm`
+5. run `bash scalene.sh`
+6. If you want to remove this Conda environment afterwards run; `conda deactivate && conda env remove -n scalene-example`
 
 ## Scalene output
 
