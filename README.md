@@ -144,6 +144,8 @@ If so either delete this existing Conda environment and run the install script a
 
 This is due to [Windows adding `\r` character to the end of new lines](https://superuser.com/questions/156516/is-there-a-bash-command-to-convert-r-n-to-n). To overcome this problem run the `dos2unix` command on the submission script that is causing these problems e.g. if the submission script is `install.com` run `dos2unix install.com` this will remove the `\r` character from the `install.com` file and should allow you to run the script through the HEC without error.
 
+3. If your Conda or pip package installation script is not working as it is hanging/failing on installing one package this could be due to the package being corrupted in the Conda cache directory. To resolve this problem delete the Conda environment that you were creating in that installation script that failed. Then clean the Conda cache by following the instruction in the [Conda and Pip cache management section within the custom software installation guide.](./install_packages/README.md#conda-and-pip-cache-management)
+
 ## Acknowledgements
 
 This guide has been funded through the [UCREL research centre](http://ucrel.lancs.ac.uk/).
