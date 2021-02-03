@@ -27,34 +27,32 @@ The rest of this tutorial is laid out as follows:
 
 ## Installation
 
-Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has SpaCy installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages). For this task we also need the SpaCy English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 17-18:
+Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has SpaCy installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages). For this task we also need the SpaCy English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 19:
 
 ``` bash
-source activate $HOME/py3.8-single-job
 python -m spacy download en_core_web_sm
 ```
 
-The first line activates our new Conda environment and the second line uses the SpaCy module to download the small English pre-trained models. These SpaCy models are saved by default within the Conda environment as they are a Python pip package, thus when you delete the Conda environment you will delete these downloaded English pre-trained models.
+These SpaCy models are saved by default within the Conda environment as they are a Python pip package, thus when you delete the Conda environment you will delete these downloaded English pre-trained models.
 
 ## Run on the HEC
 
-**Note**: If you do not want to create/save the Conda environment to your `$HOME` storage space (maybe due to space/storage restrictions), you could instead save it to the larger `$global_storage` space. This can be done simply by changing `$HOME` to `$global_storage`.
-
 1. Transfer this directory to your home directory on the HEC: `scp -r ../single_job/ username@wayland.hec.lancaster.ac.uk:./`
 2. Login to the HEC `ssh username@wayland.hec.lancaster.ac.uk` and go to the single job directory: `cd single_job` 
-3. Create the conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$HOME/py3.8-single-job`. This may take some time e.g. 5 minutes, to monitor the progress of the job use `qstat`, see the [HEC monitoring page for more details on the command.](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC)
-4. We can now run the [./tagging.py](./tagging.py) script by submitting the following job `qsub tagging.com`
+3. Create the Conda environment with the relevant python dependencies and download the SpaCy English model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$global_storage/conda_environments/py3.8-single-job`. This may take some time e.g. 5 minutes, to monitor the progress of the job use `qstat`, see the [HEC monitoring page for more details on the command.](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC)
+4. We can now run the [./tagging.py](./tagging.py) script by submitting the following job: `qsub tagging.com` 
 
-The [./tagging.com](./tagging.com) submission script first adds the `anaconda3/wmlce` module so that we have Conda installed on the compute node we are using, then activates our custom Conda/Python environment `source activate $HOME/py3.8-single-job`, and lastly runs the [./tagging.py](./tagging.py) script `python tagging.py ./alice-in-wonderland.txt ./output.tsv 50`
+The [./tagging.com](./tagging.com) submission script first adds the `anaconda3/wmlce` module so that we have Conda installed on the compute node we are using, then activates our custom Conda/Python environment `source activate $global_storage/conda_environments/py3.8-single-job`, and lastly runs the [./tagging.py](./tagging.py) script `python tagging.py ./alice-in-wonderland.txt ./output.tsv 50`
 
 ``` bash
 source /etc/profile
 module add anaconda3/wmlce
-source activate $HOME/py3.8-single-job
+source activate $global_storage/conda_environments/py3.8-single-job
 
 python tagging.py ./alice-in-wonderland.txt ./output.tsv 50
 ```
+
 5. After the tagging script has finished running, the Named Entities found in the text will be outputted into the `output.tsv` file. 
-6. **Optional**: As you have limited space in your home directory you may want to delete the Conda environment created from this job. To do so `cd $HOME` and `rm -r py3.8-single-job` or `rm -r $HOME/py3.8-single-job`
+6. **Optional**: As you have limited space in your home directory you may want to delete the Conda environment created from this job. To do so `rm -r $global_storage/conda_environments/py3.8-single-job`. Further as we cached the Conda packages you may want to clean the Conda cache directory, to do so follow the directions at [../../install_packages/README.md#Conda and Pip cache management](../../install_packages/README.md#conda-and-pip-cache-management).
 7. **Optional**: You may want to transfer the results of extracting the Named Entities to your home/local computer, to do so open a terminal on your home computer, change to the directory you want the Named Entities file to be saved too and `scp username@wayland.hec.lancaster.ac.uk:./single_job/output.tsv .` 
 
