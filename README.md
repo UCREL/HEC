@@ -115,6 +115,8 @@ In this section we will have multiple different examples of how to submit jobs t
 
 ## HEC cheat sheet
 
+See [./HEC_cheat_sheet.md](./HEC_cheat_sheet.md) for the cheat sheet.
+
 
 ## External Resources/Guides
 
