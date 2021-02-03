@@ -1,10 +1,15 @@
-# Table of contents
+# HEC Cheat Sheet
+
+All commands when used are cluster specific. There are two clusters the main `CPU` cluster and the `GPU` cluster. When you login to the HEC you are always on the `CPU` cluster. To switch between clusters use `switch-cpu` and `switch-gpu` to switch to the `CPU` and `GPU` cluster respectively. 
+
+## Table of contents
 
 1. [Job Submission commands](#job-submission-commands)
 2. [Resource Allocation commands](#resource-allocation-commands)
 3. [General Monitoring commands ](#general-monitoring-commands)
     1. [GPU Monitoring commands](#gpu-monitoring-commands)
 4. [Module commands](#module-commands)
+
 
 
 ## Job Submission commands
@@ -20,7 +25,8 @@ If your using an [array job and want to stop specific tasks see the HEC document
 
 | Command | Options | Example | Description |
 |---------|---------|---------|-------------|
-| qslots
+| qslots | | qslots | Reports the number of available job slots |
+|  | -v | qslots -v | Verbose/detailed version of `qslots` |
 | gpfsquota | | gpfsquota | View your home, storage, and scratch space usage |
 | qquota |  | qquota | Amount of resources your using on the HEC in relation to the amount of resources your allowed to use. Outputs nothing if your not running any jobs. |
 
