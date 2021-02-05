@@ -3,6 +3,4 @@ channels:
 dependencies:
   - python=3.8
   - pip
-  - pip:
-    - stanza==1.1.1
-    - git+https://github.com/apmoore1/stanza-batch.git@main
+  - git

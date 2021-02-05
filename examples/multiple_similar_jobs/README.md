@@ -26,7 +26,7 @@ There are two ways we could create a submission script to the HEC (in all of the
 ``` bash
 source /etc/profile
 module add anaconda3/wmlce
-source activate $HOME/py3.8-multiple-similar-job
+source $global_storage/conda_environments/py3.8-multiple-similar-job
 
 mkdir -p ./output_files
 for folder_number in `seq 1 2`; do
@@ -43,7 +43,7 @@ done
 
 source /etc/profile
 module add anaconda3/wmlce
-source activate $HOME/py3.8-multiple-similar-job
+source activate $global_storage/conda_environments/py3.8-multiple-similar-job
 
 mkdir -p ./output_files
 mkdir -p ./output_files/files_$SGE_TASK_ID
@@ -68,22 +68,19 @@ The rest of this tutorial is laid out as follows:
 
 ## Installation
 
-Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has stanza installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages). For this task we also need the Stanza English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 17-18:
+Before running this script we will need to crate a custom Conda environment so that we have a Python environment that has Stanza installed. For details on creating your own custom Conda/Python environment see the [installation tutorial](../../install_packages). For this task we also need the Stanza English pre-trained NER model, to do so we download this in the installation submission script, [./install.com](./install.com), on line 20:
 
 ``` bash
-source activate $HOME/py3.8-multiple-similar-job
 python ./download_stanza.py $global_storage/stanza_models
 ```
 
-The first line activates our new Conda environment and the second line runs the [./download_stanza.py](./download_stanza.py) python script whereby the first argument states the directory to save the Stanza models too. In this case we save them to the `$global_storage/stanza_models` directory.
+This line runs the [./download_stanza.py](./download_stanza.py) python script whereby the first argument states the directory to save the Stanza models too. In this case we save them to the `$global_storage/stanza_models` directory.
 
 ## Run on the HEC
 
-**Note**: If you do not want to create/save the Conda environment to your `$HOME` storage space (maybe due to space/storage restrictions), you could instead save it to the larger `$global_storage` space. This can be done simply by changing `$HOME` to `$global_storage`.
-
 1. Transfer this directory to your home directory on the HEC: `scp -r ../multiple_similar_jobs/ username@wayland.hec.lancaster.ac.uk:./`
 2. Login to the HEC `ssh username@wayland.hec.lancaster.ac.uk` and go to the single job directory: `cd multiple_similar_jobs` 
-3. Create the conda environment with the relevant python dependencies and download the Stanza English NER model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$HOME/py3.8-multiple-similar-job`. This may take some time e.g. 5 minutes, to monitor the progress of the job use `qstat`, see the [HEC monitoring page for more details on the command.](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC)
+3. Create the Conda environment with the relevant python dependencies and download the Stanza English NER model. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$global_storage/conda_environments/py3.8-multiple-similar-job`. This may take some time e.g. 5 minutes, to monitor the progress of the job use `qstat`, see the [HEC monitoring page for more details on the command.](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC)
 4. We can now run the [./tagging.py](./tagging.py) script by submitting the following job `qsub tagging.com`. The main points of the [./tagging.com](./tagging.com) were explained above. 
 5. If you run the `qstat` command you should see that you have two tasks submitted e.g.:
 ``` bash
@@ -104,7 +101,7 @@ But the HEC knows it is an array job as it shows tasks indexes in `ja-task-id` a
 
 6. After the tagging script has finished running (takes around 28 minutes to run the longest task see step 7 below), the Named Entities found in each book/file will be outputted into the `./output_files` folder. Additionally as we are running multiple tasks each task has its own standard error and output file e.g. in my case the standard output file for task 1 was `multiple-similar-job.o6841142.1` and for task 2 was `multiple-similar-job.o6841142.2`. The files are named through `job name`.`job ID`.`task ID`.
 7. If you would like to know some run time statistics, like total time each task took you can use the `qacct` command ([see the HEC pages for more details on this command](https://answers.lancaster.ac.uk/display/ISS/Monitoring+jobs+on+the+HEC)) e.g. for me to get these statistics for the first task I would run `qacct -j 6841278 -t 1` and for the second task `qacct -j 6841278 -t 2`. The longest run time `ru_wallclock` was task 1 with a total run time of `1657` seconds which is around 28 minutes. You may notice that it states the max memory/RAM used (`maxvmem` in the report `qacct` creates) to be close to 1 GB, from my experience it still requires a memory allocations of 3 GB as it would appear that parts of the Stanza model require large amounts of memory for a very short period of time which the memory monitor appears not to pick up on.
-7. **Optional**: As you have limited space in your home directory you may want to delete the Conda environment created from this job. To do so `cd $HOME` and `rm -r py3.8-multiple-similar-job` or `rm -r $HOME/py3.8-multiple-similar-job`
+7. **Optional**: As you have limited space in your storage directory you may want to delete the Conda environment created from this job. To do so `rm -r $global_storage/conda_environments/py3.8-multiple-similar-job`
 8. **Optional**: As you have 100 GB space in your `$global_storage` directory you may want to delete the downloaded stanza models. To do so `cd $global_storage` and `rm -r stanza_models`
 8. **Optional**: You may want to transfer the results of extracting the Named Entities to your home/local computer, to do so open a terminal on your home computer, change to the directory you want the Named Entities folder to be saved too and `scp -r username@wayland.hec.lancaster.ac.uk:./multiple_similar_jobs/output_files .` 
 

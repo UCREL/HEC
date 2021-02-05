@@ -6,7 +6,7 @@
 
 source /etc/profile
 module add anaconda3/wmlce
-source activate $HOME/py3.8-multiple-similar-job
+source activate $global_storage/conda_environments/py3.8-multiple-similar-job
 
 mkdir -p ./output_files
 for folder_number in `seq 1 2`; do

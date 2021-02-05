@@ -1,0 +1,2 @@
+stanza==1.1.1
+git+https://github.com/apmoore1/stanza-batch.git@main
