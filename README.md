@@ -22,6 +22,7 @@ If you have any problem with the examples, have a look at the [Problems that hav
 8. [External Resources/Guides](#external-resourcesguides)
     1. [GPU resources](#gpu-resources)
 9. [Problems that have arisen](#problems-that-have-arisen)
+10. [Acknowledgements](#acknowledgements)
 
 ## Brief overview of the HEC resources
 
@@ -148,9 +149,11 @@ This is due to [Windows adding `\r` character to the end of new lines](https://s
 
 3. If your Conda or pip package installation script is not working as it is hanging/failing on installing one package this could be due to the package being corrupted in the Conda cache directory. To resolve this problem delete the Conda environment that you were creating in that installation script that failed. Then clean the Conda cache by following the instruction in the [Conda and Pip cache management section within the custom software installation guide.](./install_packages/README.md#conda-and-pip-cache-management)
 
+4. When installing your own custom Conda environments, following the instructions in the [custom software installation guide](./install_packages), it can be the case that Conda fails without good reason, or just hangs and never installs all of the packages thus failing to install the required Conda environment fully. Sometimes this happens and by the next day it would work, which I guess might be something Conda's end that they have fixed in their remote packages. Other times it could be due to having multiple Conda environments thus if you can remove Conda environments that you do not need any more then I would suggest doing that and then cleaning the Conda and Pip cache following the instructions in the [Conda and Pip cache management section within the custom software installation guide](./install_packages/README.md#conda-and-pip-cache-management), after this your new Conda environment may install. Another suggestion that has worked in the past is to use a different Python version **if you can** e.g. instead of using Python version `3.8` use `3.7` instead. Lastly it can take a while for the HEC to create a Conda environment and install all of it's dependencies e.g. up to one hour but it should not take much longer than one hour from our experience.
+
 ## Acknowledgements
 
-This guide has been funded through the [UCREL research centre](http://ucrel.lancs.ac.uk/).
+This guide has been funded through the [UCREL research centre at Lancaster University](http://ucrel.lancs.ac.uk/).
 
 This guide has been refined and improved upon through the advice and help of Mike Pacey from [Information System Services (ISS) at Lancaster University.](https://www.lancaster.ac.uk/iss/)
 
