@@ -4,6 +4,8 @@ Resources on how to use the [High End Computing (HEC) cluster at Lancaster Unive
 
 If you have any problem with the examples, have a look at the [Problems that have arisen section](#problems-that-have-arisen) to see if the problem has occurred before, if that does not solve your problem please submit an issue on this Github page.
 
+**If you found this HEC guide useful** in that it allowed you to use the HEC for experiments that have contributed towards a paper, your thesis, or any other type of report please could you comment on the following [issue (Found the HEC guide useful)](https://github.com/apmoore1/HEC/issues/1). The reason why collecting this information is important is so that we can show empirically why these guides are useful.
+
 ## Table of contents
 
 1. [Brief overview of the HEC resources](#brief-overview-of-the-hec-resources)
