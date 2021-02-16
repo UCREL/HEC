@@ -34,7 +34,19 @@ The HEC consists of:
 
 1. Login node -> The computer you login to. This is relatively slow (due to the number of users on the HEC) and should not be used for any computationally expensive tasks e.g. running a model or installing software. Should mainly be used for monitoring and assigning jobs to other nodes/computers on the HEC. Can also be used to modify files e.g. remove files.
 2. CPU based nodes -> [Various 16 core nodes with either 64 or 128GB of memory. Various 40 core nodes with 192GB of memory.](https://answers.lancaster.ac.uk/display/ISS/Requesting+specific+node+types+for+jobs+on+the+HEC). When submitting a job for the parallel or serial queue you can see the detailed availability of compute nodes using `qslots -v`. When submitting a job (for either the parallel or serial queue) you can request the maximum amount of memory available from a node e.g. 192GB for the 40 core nodes, but you will have to wait for one of those nodes to be available. [In total the HEC has at least 9,900 cores and 50 TB of memory.](https://answers.lancaster.ac.uk/display/ISS/High+End+Computing+%28HEC%29+help)
-3. [GPU nodes](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC) -> 2 nodes, whereby each node consists of 3 Nvidia V100 32GB GPUs, 32 CPU cores, and 192GB of memory. 
+3. [GPU nodes](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC) -> 8 nodes, whereby each node consists of 3 Nvidia V100 32GB GPUs, 32 CPU cores, and 192GB of memory. Unlike the CPU based nodes the GPU nodes are time limited in that you can only run a task up to a maximum time limit. These time limits vary on the queue you submit your job too, further some of these queues limit you to the number of GPUs you can request, the table below summarises this information:
+
+| GPU Queue Name | Time Limit | Max number of GPUs per User |
+|----------------|------------|-----------------------------|
+| short          | 12 hours   |  Unlimited                  |
+| medium         | 48 hours   |  6                          |
+| long           | 7 days     | 2                           |
+
+**Note** unlimited here would mean 24 as there are currently 8 GPU nodes each with 3 GPUs.
+
+**Note** using the old/historic queue name `gpu` would submit your job to the `short` queue.
+
+**Note** for more details on [GPU queues see the HEC documentation](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC).
 
 ### File storage
 

@@ -30,18 +30,18 @@ The rest of this tutorial is laid out as follows:
 Below are the HEC submission settings. [For a detailed guide on the HEC GPU submission settings see the HEC GPU page](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC). In our GPU submission script, [./tagging.com](./tagging.com) we have the following settings:
 
 ``` bash
-#$ -q gpu
+#$ -q short
 #$ -l ngpus=1
 #$ -l ncpus=2
 #$ -l h_vmem=8G
 #$ -l h_rt=00:05:00
 ```
 
-* `#$ -q gpu` -- states we want to use the GPU queue/nodes.
+* `#$ -q gpu` -- states we want to use the `short` GPU queue. Remember from the [main README Computational resources section](../../README.md#computational-resources) the GPU nodes have 3 queues `short`, `medium`, and `long`. Each of those queues allow for varying amounts of computational time 12 hours, 48 hours, and 7 days respectively. As this job should take minutes to run we only need the `short` queue. For further details on [GPU queues see the HEC documentation](https://answers.lancaster.ac.uk/display/ISS/Using+GPUs+on+the+HEC).
 * `#$ -l ngpus=1` -- number of GPUs on a node we would like to use, in this case it is 1. The maximum this can be at the moment is 3 as the most GPUs per node currently is 3.
 * `#$ -l ncpus=2` -- number of CPUs on a node we would like to use, in this case it is 2. The maximum this can be at the moment is 32.
 * `#$ -l h_vmem=8G` -- amount of RAM/memory on a node we would like to use, in this case it is 8 GB. The maximum this can be at the moment is 192 GB.
-* `#$ -l h_rt=00:05:00` -- **how long the job will run for**, in this case it is 5 minutes. The maximum this can be is 12 hours e.g. 12:00:00. Like a lot of these settings the more you request the longer you may have to wait for your job to be submitted. **NOTE** if your job runs longer than the time you have specified the job will be automatically terminated.
+* `#$ -l h_rt=00:05:00` -- **how long the job will run for**, in this case it is 5 minutes. The maximum this can be, as it is submitted to the `short` queue, is 12 hours e.g. 12:00:00. Like a lot of these settings the more you request the longer you may have to wait for your job to be submitted. **NOTE** if your job runs longer than the time you have specified the job will be automatically terminated.
 
 Another detail is that when you want to submit a GPU job you need to switch to the GPU cluster on the terminal through the command:
 

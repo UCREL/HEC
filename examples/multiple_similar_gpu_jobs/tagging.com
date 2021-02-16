@@ -1,6 +1,6 @@
 #$ -S /bin/bash
 
-#$ -q gpu
+#$ -q short
 #$ -l ngpus=1
 #$ -l ncpus=2
 #$ -l h_vmem=8G
