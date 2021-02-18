@@ -2,7 +2,7 @@
 # https://github.com/abhimishra91/transformers-tutorials/blob/master/transformers_multi_label_classification.ipynb
 import csv
 from pathlib import Path
-from typing import Tuple, Dict, List, Union
+from typing import Tuple, Dict, List, Union, Optional
 
 from sklearn.preprocessing import MultiLabelBinarizer
 import torch
@@ -114,7 +114,7 @@ class TransformerModel(torch.nn.Module):
         self.output_layer = torch.nn.Linear(transformer_hidden_size, number_labels)
 
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor, 
-                token_type_ids: torch.Tensor) -> torch.FloatTensor:
+                token_type_ids: Optional[torch.Tensor]) -> torch.FloatTensor:
         encoded_input = self.transformer_encoder(input_ids=input_ids, 
                                                  attention_mask=attention_mask, 
                                                  token_type_ids=token_type_ids,
@@ -138,7 +138,9 @@ def train(model: torch.nn.Module, train_dataloader: DataLoader,
     for index, data in enumerate(train_dataloader):
         input_ids = data['input_ids'].to(device)
         attention_mask = data['attention_mask'].to(device)
-        token_type_ids = data['token_type_ids'].to(device)
+        token_type_ids = None
+        if 'token_type_ids' in data:
+            token_type_ids = data['token_type_ids'].to(device)
         labels = data['labels'].to(device)
 
         logits = model(input_ids, attention_mask, token_type_ids)

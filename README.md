@@ -122,6 +122,7 @@ In this section we will have multiple different examples of how to submit jobs t
 2. Running multiple similar jobs -- [./examples/multiple_similar_jobs](./examples/multiple_similar_jobs), similar to example 1 above, but tagging multiple books with named entities **using Stanza and more than one node on the HEC for processing at the same time**. This is an NLP example of what the [HEC documentation calls an array job, of which this link sends you to the HECs great example of an array job.](https://answers.lancaster.ac.uk/display/ISS/Submitting+multiple+similar+jobs+on+the+HEC) This makes tagging lots of files a lot quicker as more than one node can be processing files at the same time.
 3. Running a single job of the GPU nodes -- [./examples/single_gpu_job](./examples/single_gpu_job), same as example 1 above but using the GPU node instead of a CPU node.
 4. Running multiple similar jobs using GPU nodes -- [./examples/multiple_similar_gpu_jobs](./examples/multiple_similar_gpu_jobs), same as example 2 above but using the GPU nodes instead of the CPU nodes.
+5. Multi Label text classification training through fine tuning a transformer model ([HuggingFace transformers](https://huggingface.co/transformers/quicktour.html)) on a single GPU node. The labels in this case are emotion labels from the [GoEmotions: A Dataset of Fine-Grained Emotions](https://www.aclweb.org/anthology/2020.acl-main.372.pdf) paper. **Example is in folder** [./examples/multi_label_classification_gpu](./examples/multi_label_classification_gpu).
 
 ## Presentations about the HEC
 
