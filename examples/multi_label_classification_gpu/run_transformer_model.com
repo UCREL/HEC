@@ -1,5 +1,5 @@
 #$ -S /bin/bash
-#$ -q gpu
+#$ -q short
 #$ -l ngpus=1
 #$ -l ncpus=4
 #$ -l h_vmem=40G
