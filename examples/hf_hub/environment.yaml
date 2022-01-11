@@ -1,0 +1,8 @@
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - conda-forge::git
+  - conda-forge::git-lfs

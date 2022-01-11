@@ -124,6 +124,12 @@ In this section we will have multiple different examples of how to submit jobs t
 4. Running multiple similar jobs using GPU nodes -- [./examples/multiple_similar_gpu_jobs](./examples/multiple_similar_gpu_jobs), same as example 2 above but using the GPU nodes instead of the CPU nodes.
 5. Multi Label text classification training through fine tuning a transformer model ([HuggingFace transformers](https://huggingface.co/transformers/quicktour.html)) on a single GPU node. The labels in this case are emotion labels from the [GoEmotions: A Dataset of Fine-Grained Emotions](https://www.aclweb.org/anthology/2020.acl-main.372.pdf) paper. **Example is in folder** [./examples/multi_label_classification_gpu](./examples/multi_label_classification_gpu).
 
+## Machine learning tool examples
+
+In this section we have different examples on how to run machine learning tools on the HEC. All examples assume that you understand the [custom software installation process](#custom-software-installation) and how to [submit different jobs to the HEC](#job-submission-examples), e.g. single and array jobs.
+
+1. Downloading from the [Hugging Face model hub](https://huggingface.co/models) -- [./examples/HF_HUB](./examples/HF_HUB), this example show how to download a model repository from the Hugging Face Hub. A lot of the principals here can be applied to uploading model repositories to the Hugging Face Hub, but this is not shown.
+
 ## Presentations about the HEC
 
 1. **Archive only** A presentation briefly describing the HEC resources, access to the HEC, file store on the HEC, installing software, and training a PyTorch model on the GPU. [PDF](./presentations/26_11_20/NLP%20Group%2026_11_20.pdf) and [PowerPoint](./presentations/26_11_20/NLP%20Group%2026_11_20.pptx) presentation, and the video associated to this presentation can be found [here](https://web.microsoftstream.com/video/e510670c-2bce-4cdd-8abf-95631fccdc5f) but is only accessible to Lancaster University staff/students. This was presented at the NLP group on the 26th of November.
