@@ -36,12 +36,11 @@ if __name__ == '__main__':
                     f'has already been cloned too {repository_dir}. Therefore using'
                     ' the already cloned directory.')    
     assert isinstance(repository, Repository)
-    logger.info(f'Model card data: {repository.repocard_metadata_load()}')
-    logger.info("Files that have been cloned from the "\
-                f"{hf_model_hub_repository} model repository" \
-                f" into the directory: {repository_dir}:")
+    print(f'Model card data: {repository.repocard_metadata_load()}')
+    print("Files that have been cloned from the "
+          f"{hf_model_hub_repository} model repository"
+          f" into the directory: {repository_dir}:")
     for file_path in repository_dir.iterdir():
-        logger.info(f'{file_path.name}')
+        print(f'{file_path.name}')
     # If you would like to enable uploading of large file >5GB you can run the following:
     repository.lfs_enable_largefiles()
-    print('test')

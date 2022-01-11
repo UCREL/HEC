@@ -21,6 +21,23 @@ Before running this script we will need to create a custom Conda environment so 
 3. Create the Conda environment with the relevant Conda and Python dependencies. This can be done by submitting the [./install.com](./install.com) job e.g. `qsub install.com`. This will create the Conda environment at `$global_storage/conda_environments/py3.9-hf-hub`
 4. We can now run the Python script [./hf_download_script.py](./hf_download_script.py), by submitting the [./hf_download_script.com](./hf_download_script.com) job, e.g. `qsub hf_download_script.com`, this will download the [electra small discriminator model repository](https://huggingface.co/google/electra-small-discriminator/tree/main) to `$global_storage/hf_models/google_electra_small_discriminator` (the [./hf_download_script.com](./hf_download_script.com) job also creates the `$global_storage/hf_models` directory for you if it does not exist)
 
+After you have ran the script, it also logs the name of files in the model repository that was downloaded and the model card data to the output file (my output file was named `hf_download.o9821916`), you can see below what part of the output file should contain:
+
+```
+Model card data: {'language': 'en', 'thumbnail': 'https://huggingface.co/front/thumbnails/google.png', 'license': 'apache-2.0'}
+Files that have been cloned from the google/electra-small-discriminator model repository into the directory: /mmfs1/storage/users/moorea/hf_models/google_electra_small_discriminator:
+config.json
+pytorch_model.bin
+.gitattributes
+tf_model.h5
+tokenizer_config.json
+vocab.txt
+flax_model.msgpack
+README.md
+tokenizer.json
+.git
+```
+
 ### General notes
 
 1. According to the [Hugging Face Hub API documentation](https://huggingface.co/docs/hub/how-to-upstream#upload-very-large-files) if you want to **upload** (all this example does is download) files larger than 5GB you need to install/enable a custom transfer agent for Git-LFS **for each repository**. On line 46 of the [./hf_download_script.py python script](./hf_download_script.py#L46) it shows you how this can be installed/enabled (it does not require you to install anything, just requires you to allow/enable it from what I have found).
