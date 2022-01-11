@@ -128,7 +128,7 @@ In this section we will have multiple different examples of how to submit jobs t
 
 In this section we have different examples on how to run machine learning tools on the HEC. All examples assume that you understand the [custom software installation process](#custom-software-installation) and how to [submit different jobs to the HEC](#job-submission-examples), e.g. single and array jobs.
 
-1. Downloading from the [Hugging Face model hub](https://huggingface.co/models) -- [./examples/HF_HUB](./examples/HF_HUB), this example show how to download a model repository from the Hugging Face Hub. A lot of the principals here can be applied to uploading model repositories to the Hugging Face Hub, but this is not shown.
+1. Downloading from the [Hugging Face model hub](https://huggingface.co/models) -- [./examples/hf_hub](./examples/hf_hub), this example show how to download a model repository from the Hugging Face Hub. A lot of the principals here can be applied to uploading model repositories to the Hugging Face Hub, but this is not shown.
 
 ## Presentations about the HEC
 
